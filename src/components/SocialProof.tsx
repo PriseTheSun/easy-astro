@@ -42,7 +42,7 @@ function CompanyMarquee() {
             <img 
               src={company.img.src} 
               alt={company.name} 
-              className="h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+              className="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-all duration-300"
             />
           </div>
         ))}
