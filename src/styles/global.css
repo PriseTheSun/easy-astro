@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #E5293F;
+  --color-primary-dark: #A82130;
+  --color-gray: #ACBAC2;
+  --color-gray-dark: #7F919A;
+  --color-black: #191919;
+  --color-white: #F9F9F9;
+  
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+* {
+  font-family: var(--font-montserrat);
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #E5293F 0%, #A82130 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-red {
+  background: linear-gradient(135deg, #E5293F 0%, #A82130 100%);
+}
+
+.bg-gradient-gray {
+  background: linear-gradient(135deg, #ACBAC2 0%, #191919 100%);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(229, 41, 63, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(229, 41, 63, 0.6); }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ACBAC2;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7F919A;
+}

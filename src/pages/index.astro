@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import SocialProof from '../components/SocialProof';
+import Diferenciais from '../components/Diferenciais';
+import Ecosystem from '../components/Ecosystem';
+import ArtificialIntelligence from '../components/ArtificialIntelligence';
+import Dashboard from '../components/Dashboard';
+import Benefits from '../components/Benefits';
+import Pricing from '../components/Pricing';
+import CTASection from '../components/CTASection';
+import TestimonialsFAQ from '../components/TestimonialsFAQ';
+import ArtifactCards from '../components/ArtifactCards';
+import Footer from '../components/Footer';
+---
+
+<Layout title="EasyJur - Software Jurídico com Inteligência Artificial">
+  <Header client:load />
+  
+  <main>
+    <Hero client:load />
+    <SocialProof client:visible />
+    <Diferenciais client:visible />
+    <Ecosystem client:visible />
+    <ArtificialIntelligence client:visible />
+    <Dashboard client:visible />
+    <ArtifactCards client:visible />
+    <Benefits client:visible />
+    <Pricing client:visible />
+    <CTASection client:visible />
+    <TestimonialsFAQ client:visible />
+  </main>
+  
+  <Footer />
+</Layout>
