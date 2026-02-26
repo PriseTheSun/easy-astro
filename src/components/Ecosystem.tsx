@@ -1,31 +1,60 @@
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, DollarSign, Folder, Calendar, Users, MessageSquare, Scale } from 'lucide-react';
+import { Scale, Building2, FileText, DollarSign, Calendar, Users, MessageSquare, Shield } from 'lucide-react';
 
-const features = [
-  { icon: FileText, label: 'GED', description: 'Gestão de Documentos' },
-  { icon: DollarSign, label: 'Financeiro', description: 'Controle Financeiro' },
-  { icon: Scale, label: 'Processos', description: 'Gestão de Causas' },
-  { icon: MessageSquare, label: 'Publicações', description: 'Alertas e Notificações' },
-  { icon: Calendar, label: 'Prazos', description: 'Controle de Datas' },
-  { icon: Users, label: 'Atendimentos', description: 'CRM Jurídico' },
-  { icon: Folder, label: 'Clientes', description: 'Cadastro Completo' },
+function OrbitingCircles({ 
+  children, 
+  radius = 100, 
+  speed = 1, 
+  reverse = false,
+  iconSize = 40 
+}: { 
+  children: React.ReactNode[];
+  radius?: number;
+  speed?: number;
+  reverse?: boolean;
+  iconSize?: number;
+}) {
+  const childArray = Array.isArray(children) ? children : [children];
+  
+  return (
+    <motion.div
+      className="absolute inset-0 flex items-center justify-center"
+      animate={{ rotate: reverse ? 360 : -360 }}
+      transition={{ duration: 20 / speed, repeat: Infinity, ease: "linear" }}
+    >
+      {childArray.map((child, index) => {
+        const angle = (index * 360) / childArray.length;
+        const x = Math.cos((angle * Math.PI) / 180) * radius;
+        const y = Math.sin((angle * Math.PI) / 180) * radius;
+        
+        return (
+          <motion.div
+            key={index}
+            className="absolute"
+            style={{
+              transform: `translate(${x}px, ${y}px)`,
+            }}
+          >
+            {child}
+          </motion.div>
+        );
+      })}
+    </motion.div>
+  );
+}
+
+const orbitItems = [
+  { icon: Scale, color: "#E5293F" },
+  { icon: Building2, color: "#A82130" },
+  { icon: FileText, color: "#7F919A" },
+  { icon: DollarSign, color: "#191919" },
+  { icon: Calendar, color: "#E5293F" },
+  { icon: Users, color: "#A82130" },
+  { icon: MessageSquare, color: "#7F919A" },
+  { icon: Shield, color: "#191919" },
 ];
 
 export default function Ecosystem() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white" />
@@ -38,83 +67,93 @@ export default function Ecosystem() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#191919] mb-6">
             A plataforma de gestão jurídica{' '}
             <span className="text-gradient">mais completa do Brasil.</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-[#7F919A] max-w-3xl mx-auto">
             Tudo o que você precisa em uma única solução tecnológica para advogados e departamentos jurídicos.
           </p>
         </motion.div>
 
-        <div className="relative h-[600px] flex items-center justify-center">
+        <div className="relative h-[500px] flex items-center justify-center">
           <motion.div
-            animate={{
-              x: mousePosition.x,
-              y: mousePosition.y,
-            }}
-            transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-            className="relative w-[400px] h-[400px]"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative w-[300px] h-[300px]"
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/10 to-primary/5 animate-pulse" />
-            
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-48 h-48 rounded-full bg-gradient-red flex items-center justify-center shadow-2xl animate-pulse-glow">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-white">EasyJur</div>
-                  <div className="text-white/80 text-sm">Plataforma Completa</div>
-                </div>
-              </div>
-            </div>
-
-            {features.map((feature, index) => {
-              const angle = (index * 360) / features.length;
-              const radius = 200;
-              const x = Math.cos((angle * Math.PI) / 180) * radius;
-              const y = Math.sin((angle * Math.PI) / 180) * radius;
-
-              return (
-                <motion.div
-                  key={feature.label}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  animate={{
-                    x: x,
-                    y: y,
-                  }}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="w-24 h-24 bg-white rounded-2xl shadow-xl border border-gray-100 p-4 flex flex-col items-center justify-center cursor-pointer hover:shadow-2xl transition-shadow"
-                  >
-                    <feature.icon className="w-8 h-8 text-primary mb-1" />
-                    <span className="text-xs font-semibold text-black">{feature.label}</span>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-
             <svg className="absolute inset-0 w-full h-full pointer-events-none">
               <circle
                 cx="50%"
                 cy="50%"
-                r="200"
+                r="140"
                 fill="none"
-                stroke="url(#gradient)"
-                strokeWidth="1"
-                strokeDasharray="10 5"
+                stroke="url(#orbitGradient)"
+                strokeWidth="2"
+                strokeDasharray="4 8"
+                opacity="0.4"
+              />
+              <circle
+                cx="50%"
+                cy="50%"
+                r="220"
+                fill="none"
+                stroke="url(#orbitGradient)"
+                strokeWidth="2"
+                strokeDasharray="4 8"
                 opacity="0.3"
               />
               <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#E5293F" />
                   <stop offset="100%" stopColor="#A82130" />
                 </linearGradient>
               </defs>
             </svg>
+
+            <OrbitingCircles radius={140} speed={1}>
+              {orbitItems.slice(0, 4).map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ scale: 1.1 }}
+                  className="w-14 h-14 rounded-full bg-white shadow-lg border-2 border-gray-100 flex items-center justify-center cursor-pointer"
+                  style={{ borderColor: item.color }}
+                >
+                  <item.icon className="w-6 h-6" style={{ color: item.color }} />
+                </motion.div>
+              ))}
+            </OrbitingCircles>
+
+            <OrbitingCircles radius={220} speed={0.7} reverse>
+              {orbitItems.slice(4, 8).map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ scale: 1.1 }}
+                  className="w-12 h-12 rounded-full bg-white shadow-lg border-2 border-gray-100 flex items-center justify-center cursor-pointer"
+                  style={{ borderColor: item.color }}
+                >
+                  <item.icon className="w-5 h-5" style={{ color: item.color }} />
+                </motion.div>
+              ))}
+            </OrbitingCircles>
+
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", duration: 0.8 }}
+                className="w-28 h-28 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-xl"
+              >
+                <img 
+                  src="/favicon.svg" 
+                  alt="EasyJur" 
+                  className="w-16 h-16"
+                />
+              </motion.div>
+            </div>
           </motion.div>
         </div>
 
@@ -126,16 +165,21 @@ export default function Ecosystem() {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12"
         >
           {[
-            { label: 'Integrações', value: '50+', icon: '🔌' },
-            { label: 'Tribunais', value: '100+', icon: '⚖️' },
-            { label: 'APIs', value: '30+', icon: '🔧' },
-            { label: 'Updates/Mês', value: '12+', icon: '🚀' },
-          ].map((stat) => (
-            <div key={stat.label} className="bg-gray-50 rounded-2xl p-6 text-center">
-              <div className="text-2xl mb-2">{stat.icon}</div>
-              <div className="text-2xl font-bold text-black">{stat.value}</div>
-              <div className="text-gray-500 text-sm">{stat.label}</div>
-            </div>
+            { label: 'Integrações', color: '#E5293F' },
+            { label: 'Tribunais', color: '#A82130' },
+            { label: 'APIs', color: '#7F919A' },
+            { label: 'Updates/Mês', color: '#191919' },
+          ].map((stat, idx) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="bg-[#F9F9F9] rounded-2xl p-6 text-center border border-gray-200"
+            >
+              <div className="text-xl font-semibold" style={{ color: stat.color }}>{stat.label}</div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
