@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Menu, X, Sun, Moon } from 'lucide-react';
 import { cn } from '../lib/utils';
@@ -108,13 +108,25 @@ interface HeaderProps {
 export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderProps) {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <header className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+      scrolled ? "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm" : "bg-white border-b border-transparent"
+    )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <a href="#" className="flex items-center gap-2">
-            <img src="/images/logo.svg" alt="EasyJur" className="h-10 w-auto" />
+            <img src="/src/assets/images/logo-principal.avif" alt="EasyJur" className="h-12 w-auto" />
           </a>
 
           <nav className="hidden lg:flex items-center gap-1">

@@ -34,9 +34,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm">
-              <span className="text-sm font-semibold text-primary">A plataforma nº #1 em eficiência jurídica.</span>
-            </div>
+            <span className="text-sm font-semibold text-primary">A plataforma nº #1 em eficiência jurídica.</span>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
               <span className="text-gray-900">Software Jurídico com </span>
