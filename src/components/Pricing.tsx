@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Star, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 interface Plan {
@@ -66,6 +66,7 @@ const plans: Plan[] = [
       'Controle Orçamentário',
       'Gestão Estratégica',
       '200 Acessos para clientes',
+      'Tudo do Premium +',
     ],
     buttonText: 'TESTE GRÁTIS',
   },
@@ -93,6 +94,7 @@ const plans: Plan[] = [
       'Automação de Faturamento',
       'Campos Personalizados',
       '500 Acessos para clientes',
+      'Tudo do Standard +',
     ],
     buttonText: 'TESTE GRÁTIS',
   },
@@ -114,15 +116,14 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
       )}
     >
       {plan.popular && (
-        <div className="absolute top-0 left-0 right-0">
-          <div className="bg-gradient-to-r from-primary to-red-600 text-white px-4 py-2 text-center text-sm font-medium flex items-center justify-center gap-2">
-            <Star className="w-4 h-4 fill-current" />
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10">
+          <div className="bg-black text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">
             MAIS CONTRATADO
           </div>
         </div>
       )}
 
-      <div className={cn("p-8", plan.popular ? "pt-12" : "")}>
+      <div className={cn("p-8", plan.popular ? "pt-10" : "")}>
         <div className="mb-6">
           <h3 className={cn(
             "text-2xl font-bold mb-2",
@@ -145,9 +146,12 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
             </span>
             <span className={plan.popular ? 'text-gray-400' : 'text-gray-600'}>{plan.period}</span>
           </div>
-          <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 text-green-500 text-sm font-medium">
-            <Sparkles className="w-4 h-4" />
-            <span>pague no cartão e ganhe até {plan.cashback} cashback</span>
+          <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 text-green-500 text-sm font-medium group relative cursor-help">
+            <span>Ganhe até {plan.cashback} cashback</span>
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap">
+              Válido para pagamentos no cartão
+              <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+            </div>
           </div>
         </div>
 
@@ -156,9 +160,12 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
             <div key={i} className="flex items-start gap-3">
               <div className={cn(
                 "w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5",
-                plan.popular ? 'bg-primary' : 'bg-primary'
+                plan.popular ? 'bg-primary' : 'bg-primary/10'
               )}>
-                <Check className="w-3 h-3 text-white" />
+                <Check className={cn(
+                  "w-3 h-3",
+                  plan.popular ? 'text-white' : 'text-primary'
+                )} />
               </div>
               <span className={plan.popular ? 'text-gray-300 text-sm' : 'text-gray-700 text-sm'}>
                 {feature}
@@ -180,11 +187,11 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
                 <div key={i} className="flex items-start gap-3">
                   <div className={cn(
                     "w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5",
-                    plan.popular ? 'bg-white/20' : 'bg-gray-100'
+                    plan.popular ? 'bg-white/20' : 'bg-primary/10'
                   )}>
                     <Check className={cn(
                       "w-3 h-3",
-                      plan.popular ? 'text-white' : 'text-gray-600'
+                      plan.popular ? 'text-white' : 'text-primary'
                     )} />
                   </div>
                   <span className={plan.popular ? 'text-gray-400 text-sm' : 'text-gray-600 text-sm'}>
