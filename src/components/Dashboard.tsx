@@ -254,35 +254,35 @@ export default function Dashboard() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="col-span-6 row-span-2 row-start-1 bg-white rounded-2xl p-5 shadow-sm border border-gray-100"
+            className="col-span-6 row-span-2 row-start-1 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700"
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#E5293F]/10 flex items-center justify-center">
-                  <DollarSign className="w-5 h-5 text-[#E5293F]" />
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <DollarSign className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-semibold text-gray-900">Receita e Despesas</h3>
+                <h3 className="font-semibold text-gray-900 dark:text-white">Receita e Despesas</h3>
               </div>
               <div className="flex items-center gap-4 text-xs">
                 <div className="flex items-center gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-[#E5293F]" />
-                  <span className="text-gray-500">Receita</span>
+                  <div className="w-3 h-3 rounded-full bg-primary" />
+                  <span className="text-gray-500 dark:text-gray-400">Receita</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-[#7F919A]" />
-                  <span className="text-gray-500">Despesas</span>
+                  <div className="w-3 h-3 rounded-full bg-gray-400" />
+                  <span className="text-gray-500 dark:text-gray-400">Despesas</span>
                 </div>
               </div>
             </div>
             <LineChartComponent />
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
               <div>
-                <div className="text-2xl font-bold text-gray-900">R$ 245.000</div>
-                <div className="text-sm text-gray-500">Receita do mês</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">R$ 245.000</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">Receita do mês</div>
               </div>
               <div className="flex items-center gap-1">
-                <TrendingUp className="w-4 h-4 text-[#E5293F]" />
-                <div className="text-lg font-semibold text-[#E5293F]">+23%</div>
+                <TrendingUp className="w-4 h-4 text-primary" />
+                <div className="text-lg font-semibold text-primary">+23%</div>
               </div>
             </div>
           </motion.div>
@@ -292,13 +292,13 @@ export default function Dashboard() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="col-span-3 row-span-3 col-start-1 row-start-3 bg-white rounded-2xl p-5 shadow-sm border border-gray-100"
+            className="col-span-3 row-span-3 col-start-1 row-start-3 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-[#E5293F]/10 flex items-center justify-center">
-                <TrendingUp className="w-5 h-5 text-[#E5293F]" />
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <TrendingUp className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-semibold text-gray-900">Status dos Contratos</h3>
+              <h3 className="font-semibold text-gray-900 dark:text-white">Status dos Contratos</h3>
             </div>
             <ContractChart />
           </motion.div>
@@ -308,13 +308,13 @@ export default function Dashboard() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="col-span-3 row-span-3 col-start-4 row-start-3 bg-white rounded-2xl p-5 shadow-sm border border-gray-100"
+            className="col-span-3 row-span-3 col-start-4 row-start-3 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-[#E5293F]/10 flex items-center justify-center">
-                <Briefcase className="w-5 h-5 text-[#E5293F]" />
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Briefcase className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-semibold text-gray-900">Processos por Área</h3>
+              <h3 className="font-semibold text-gray-900 dark:text-white">Processos por Área</h3>
             </div>
             <ProcessDonut />
           </motion.div>
