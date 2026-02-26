@@ -4,6 +4,11 @@ import { Star, ChevronDown, ChevronUp } from 'lucide-react';
 import Marquee from './ui/marquee';
 import { cn } from '../lib/utils';
 
+import selos100OpenStartups from '../assets/images/selos/100_open_startups.png';
+import selosB2bAwardsGestao from '../assets/images/selos/b2b-awards-gestao-escritorios.png';
+import selosB2bAwardsPequeno from '../assets/images/selos/b2b-awards-escritorio-pequeno-porte.png';
+import selosAb2l from '../assets/images/selos/logo-ab2l-2023.svg';
+
 const testimonials = [
   {
     name: "Dr. Carlos Silva",
@@ -181,10 +186,10 @@ export default function TestimonialsFAQ() {
             <h3 className="text-2xl font-bold text-black mb-8">Parceiros e Reconhecimentos</h3>
             <div className="grid grid-cols-2 gap-6">
               {[
-                { name: 'OAB', icon: '⚖️', desc: 'Certificação Oficial' },
-                { name: 'G2', icon: '🏆', desc: 'Best Software 2024' },
-                { name: 'ISO 27001', icon: '🔒', desc: 'Segurança Certificada' },
-                { name: 'ANPD', icon: '📋', desc: 'LGPD Compliant' },
+                { name: 'Top Open Startups', img: selos100OpenStartups, desc: '100 Open Startups 2024' },
+                { name: 'Gestao Escritorios', img: selosB2bAwardsGestao, desc: 'B2B Awards' },
+                { name: 'Escritorio Pequeno Porte', img: selosB2bAwardsPequeno, desc: 'B2B Awards' },
+                { name: 'AB2L', img: selosAb2l, desc: 'Associação Brasileira de LegalTechs' },
               ].map((partner, i) => (
                 <motion.div
                   key={partner.name}
@@ -192,11 +197,12 @@ export default function TestimonialsFAQ() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100"
+                  className="bg-white rounded-2xl p-6 text-center border border-gray-200 hover:border-primary/30 hover:shadow-lg transition-all"
                 >
-                  <div className="text-4xl mb-3">{partner.icon}</div>
-                  <div className="font-bold text-black">{partner.name}</div>
-                  <div className="text-sm text-gray-500">{partner.desc}</div>
+                  <div className="h-16 flex items-center justify-center mb-3">
+                    <img src={partner.img.src} alt={partner.name} className="max-h-full max-w-full object-contain" />
+                  </div>
+                  <div className="text-sm text-gray-600">{partner.desc}</div>
                 </motion.div>
               ))}
             </div>
