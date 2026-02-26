@@ -83,13 +83,13 @@ export default function DashboardMockup() {
         <div className="bg-gray-50 px-4 py-2 flex items-center justify-between border-b border-gray-100">
           <div className="flex items-center gap-2">
             <Menu className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
-            <span className="text-gray-700 font-medium text-sm">EasyJur</span>
+            <span className="text-gray-700 font-medium text-sm">Growth+</span>
           </div>
           <div className="flex items-center gap-3">
             <Search className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
             <Bell className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
             <div className="w-6 h-6 rounded-full bg-gradient-to-r from-primary to-red-600 flex items-center justify-center">
-              <span className="text-white text-[10px] font-bold">EJ</span>
+              <span className="text-white text-[10px] font-bold">G+</span>
             </div>
           </div>
         </div>

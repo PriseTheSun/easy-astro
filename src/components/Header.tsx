@@ -110,14 +110,11 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <a href="#" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-red rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">E</span>
-            </div>
-            <span className="text-2xl font-bold text-black">EasyJur</span>
+            <img src="/images/logo.svg" alt="EasyJur" className="h-10 w-auto" />
           </a>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -164,7 +161,7 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <button className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+            <button className="text-sm font-semibold text-gray-900 hover:text-primary transition-colors">
               Entrar
             </button>
             <ShimmerButton>Testar 7 dias Grátis</ShimmerButton>

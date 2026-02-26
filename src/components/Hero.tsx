@@ -25,12 +25,7 @@ function ShimmerButton({ children, className, onClick }: { children: React.React
 
 export default function Hero({ onCTAClick }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-white to-[#F9F9F9]">
-      <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 via-transparent to-gray-50/30" />
-      
-      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-3xl" />
-
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#F9F9F9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -39,17 +34,16 @@ export default function Hero({ onCTAClick }: HeroProps) {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-950 border border-red-100 dark:border-red-900">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary">Tecnologia Jurídica</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm">
+              <span className="text-sm font-semibold text-primary">A plataforma nº #1 em eficiência jurídica.</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-              <span className="text-black dark:text-white">Software Jurídico com </span>
+              <span className="text-gray-900">Software Jurídico com </span>
               <span className="text-gradient">Inteligência Artificial</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-xl">
+            <p className="text-base sm:text-lg text-gray-900 max-w-xl">
               Você foca no Direito, nós cuidamos da gestão. Automatize tarefas, controle prazos 
               e tenha um escritório mais produtivo com a EasyJur.
             </p>
@@ -59,7 +53,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
                 Experimente Grátis
                 <ArrowRight className="w-4 h-4" />
               </ShimmerButton>
-              <button className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:border-primary hover:text-primary transition-colors whitespace-nowrap">
+              <button className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 border-gray-300 text-gray-900 font-semibold hover:border-primary hover:text-primary transition-colors whitespace-nowrap bg-white">
                 <Play className="w-4 h-4" />
                 Ver Demonstração
               </button>
@@ -70,7 +64,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
-                    className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xs font-medium"
+                    className="w-10 h-10 rounded-full border-2 border-[#F9F9F9] bg-gray-300 flex items-center justify-center text-xs font-medium"
                   >
                     {String.fromCharCode(64 + i)}
                   </div>
@@ -84,7 +78,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
                     </svg>
                   ))}
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Mais de 10 mil advogados</p>
+                <p className="text-sm text-gray-600">Mais de 10 mil advogados</p>
               </div>
             </div>
           </motion.div>
