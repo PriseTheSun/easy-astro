@@ -124,9 +124,9 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
       scrolled ? "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm" : "bg-white border-b border-transparent"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           <a href="#" className="flex items-center gap-2">
-            <img src="/src/assets/images/logo-principal.avif" alt="EasyJur" className="h-12 w-auto" />
+            <img src="/src/assets/images/logo-principal.avif" alt="EasyJur" className="h-8 w-auto" />
           </a>
 
           <nav className="hidden lg:flex items-center gap-1">
