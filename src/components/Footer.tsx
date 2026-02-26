@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Send, Instagram, Linkedin, Youtube, Facebook } from 'lucide-react';
+import logoBranca from '../assets/images/logo-branca.webp';
 
 const footerLinks = {
   institucional: [
@@ -30,10 +31,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-red rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">E</span>
-              </div>
-              <span className="text-2xl font-bold text-white">EasyJur</span>
+              <img src={logoBranca.src} alt="EasyJur" className="h-12" />
             </a>
             <p className="text-gray-400 mb-6 max-w-sm">
               A plataforma de gestão jurídica mais completa do Brasil. 
