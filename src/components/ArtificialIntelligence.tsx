@@ -35,7 +35,7 @@ const benefits = [
 
 export default function ArtificialIntelligence() {
   return (
-    <section className="py-24 bg-black dark:bg-black relative overflow-hidden">
+    <section className="py-24 bg-black relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#E5293F]/5 rounded-full blur-[100px]" />
         <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-[#A82130]/5 rounded-full blur-[80px]" />
@@ -50,12 +50,12 @@ export default function ArtificialIntelligence() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white dark:text-white mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
             Sua produtividade é elevada <br />
             <span className="text-gradient">ao máximo com IA.</span>
           </h2>
           
-          <p className="text-base text-gray-400 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base text-gray-400 max-w-2xl mx-auto">
             Transforme a forma como você trabalha. A Inteligência Artificial da EasyJur automatiza tarefas repetitivas e entrega resultados precisos em segundos.
           </p>
         </motion.div>
@@ -68,11 +68,11 @@ export default function ArtificialIntelligence() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-4 border border-gray-200 dark:border-gray-700 text-center"
+              className="bg-[#0F0F0F] rounded-2xl p-4 border border-gray-800 text-center"
             >
-              <benefit.icon className="w-5 h-5 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900 dark:text-white">{benefit.value}</div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">{benefit.label}</div>
+              <benefit.icon className="w-5 h-5 text-[#E5293F] mx-auto mb-2" />
+              <div className="text-2xl font-bold text-white">{benefit.value}</div>
+              <div className="text-xs text-gray-500">{benefit.label}</div>
             </motion.div>
           ))}
         </div>
@@ -87,7 +87,7 @@ export default function ArtificialIntelligence() {
               transition={{ duration: 0.4, delay: index * 0.05 }}
               whileHover={{ scale: 1.02 }}
               className={cn(
-                "group bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700 hover:border-primary/50 transition-all cursor-pointer relative overflow-hidden",
+                "group bg-[#0F0F0F] rounded-2xl p-5 border border-gray-800 hover:border-[#E5293F]/50 transition-all cursor-pointer relative overflow-hidden",
                 index === 0 && "col-span-2 row-span-3",
                 index === 1 && "row-span-3 col-start-3",
                 index === 2 && "col-span-2 row-span-4 col-start-4",
@@ -96,19 +96,19 @@ export default function ArtificialIntelligence() {
                 index === 5 && "col-span-2 row-span-2 col-start-4 row-start-5"
               )}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E5293F]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               
               <div className="relative z-10 h-full flex flex-col">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                  <feature.icon className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-lg bg-[#E5293F]/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-5 h-5 text-[#E5293F]" />
                 </div>
 
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">{feature.title}</h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400 flex-1">{feature.description}</p>
+                <h3 className="text-sm font-semibold text-white mb-1">{feature.title}</h3>
+                <p className="text-xs text-gray-400 flex-1">{feature.description}</p>
               </div>
 
-              <div className="absolute bottom-3 right-3 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-0.5">
-                <ArrowRight className="w-3 h-3 text-primary" />
+              <div className="absolute bottom-3 right-3 w-6 h-6 rounded-full bg-[#E5293F]/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-0.5">
+                <ArrowRight className="w-3 h-3 text-[#E5293F]" />
               </div>
             </motion.div>
           ))}
