@@ -40,22 +40,18 @@ export default function CTASection() {
             className="order-2 lg:order-1"
           >
             <div className="relative aspect-square max-w-md mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-purple-500/30 rounded-3xl transform rotate-3" />
-              <div className="relative bg-gray-800 rounded-3xl overflow-hidden h-full">
-                <img 
-                  src={priscilaImage.src} 
-                  alt="Priscila - Especialista EasyJur" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-4 -right-4 w-20 h-20 bg-white rounded-2xl shadow-xl p-3 flex items-center justify-center"
+                className="absolute -top-4 -right-4 w-20 h-20 bg-white rounded-2xl shadow-xl p-3 flex items-center justify-center z-10"
               >
                 <MessageCircle className="w-8 h-8 text-primary" />
               </motion.div>
+              <img 
+                src={priscilaImage.src} 
+                alt="Priscila - Especialista EasyJur" 
+                className="w-full h-full object-contain rounded-3xl"
+              />
             </div>
           </motion.div>
 
