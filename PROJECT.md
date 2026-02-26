@@ -35,6 +35,17 @@
 - Bento Grid: border sutil (border-gray-100), backgrounds com gradiente sutil, hover effects
 - Cards com múltiplas colunas (col-span-2, col-span-3)
 - Elements: Marquee, Animated Lists, Beams como backgrounds dos cards
+- **PROIBIDO layouts 100% centralizados** - Usar grids com "espaço negativo"
+
+## Scroll Suave
+- Implementar `Lenis` ou `GSAP ScrollTrigger` para rolagem amanteigada (smooth scroll)
+- Experiência premium de navegação
+
+## Artefatos Funcionais Interativos
+Cards que parecem micro-UIs de software vivo:
+1. **Diagnostic Shuffler:** 3 cards sobrepostos que ciclam verticalmente com bounce (34, 1.56, 0.64, 1) a cada 3s
+2. **Telemetry Typewriter:** Feed de texto live (monospace) digitando mensagens com cursor piscante
+3. **Protocol Scheduler:** Grade semanal com cursor SVG animado, clique em dia (efeito escala), destaque e "Salvar"
 
 ## Estrutura de Componentes
 - Header: Navigation com logo, menu, botões
