@@ -20,6 +20,12 @@
 body {
   background-color: var(--color-white);
   color: var(--color-black);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .text-gradient {
@@ -77,11 +83,23 @@ html {
   background: #f1f1f1;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #ACBAC2;
   border-radius: 4px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #404040;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #7F919A;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #606060;
 }

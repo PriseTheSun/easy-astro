@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header';
+import AppWrapper from '../components/AppWrapper';
 import Hero from '../components/Hero';
 import SocialProof from '../components/SocialProof';
 import Diferenciais from '../components/Diferenciais';
@@ -16,21 +16,21 @@ import Footer from '../components/Footer';
 ---
 
 <Layout title="EasyJur - Software Jurídico com Inteligência Artificial">
-  <Header client:load />
-  
-  <main>
-    <Hero client:load />
-    <SocialProof client:visible />
-    <Diferenciais client:visible />
-    <Ecosystem client:visible />
-    <ArtificialIntelligence client:visible />
-    <Dashboard client:visible />
-    <ArtifactCards client:visible />
-    <Benefits client:visible />
-    <Pricing client:visible />
-    <CTASection client:visible />
-    <TestimonialsFAQ client:visible />
-  </main>
-  
-  <Footer />
+  <AppWrapper client:load>
+    <main>
+      <Hero client:load />
+      <SocialProof client:visible />
+      <Diferenciais client:visible />
+      <Ecosystem client:visible />
+      <ArtificialIntelligence client:visible />
+      <Dashboard client:visible />
+      <ArtifactCards client:visible />
+      <Benefits client:visible />
+      <Pricing client:visible />
+      <CTASection client:visible />
+      <TestimonialsFAQ client:visible />
+    </main>
+    
+    <Footer />
+  </AppWrapper>
 </Layout>

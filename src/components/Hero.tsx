@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 import { cn } from '../lib/utils';
+import DashboardMockup from './DashboardMockup';
 
 interface HeroProps {
   onCTAClick?: () => void;
@@ -11,7 +12,7 @@ function ShimmerButton({ children, className, onClick }: { children: React.React
     <button
       onClick={onClick}
       className={cn(
-        "relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full px-8 font-semibold text-white transition-all duration-300",
+        "relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full px-6 font-semibold text-white transition-all duration-300 whitespace-nowrap",
         "bg-gradient-red hover:shadow-[0_0_40px_-10px_rgba(229,41,63,0.5)]",
         className
       )}
@@ -24,8 +25,8 @@ function ShimmerButton({ children, className, onClick }: { children: React.React
 
 export default function Hero({ onCTAClick }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white">
-      <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 via-transparent to-gray-50/30" />
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white dark:bg-black">
+      <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 via-transparent to-gray-50/30 dark:from-red-950/20 dark:via-transparent dark:to-gray-900/30" />
       
       <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-3xl" />
@@ -36,42 +37,40 @@ export default function Hero({ onCTAClick }: HeroProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-100">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-950 border border-red-100 dark:border-red-900">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary">Software Jurídico com IA</span>
+              <span className="text-sm font-medium text-primary">Tecnologia Jurídica</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="text-black">Software Jurídico com </span>
-              <span className="text-gradient">Inteligência Artificial:</span>
-              <br />
-              <span className="text-black">Produtividade de Verdade.</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+              <span className="text-black dark:text-white">Software Jurídico com </span>
+              <span className="text-gradient">Inteligência Artificial</span>
             </h1>
 
-            <p className="text-lg text-gray-600 max-w-xl">
-              Você foca no Direito, nós cuidamos do resto. Automatize tarefas, controle prazos e 
-              tenha uma gestão completa do seu escritório com a tecnologia EasyJur.
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-xl">
+              Você foca no Direito, nós cuidamos da gestão. Automatize tarefas, controle prazos 
+              e tenha um escritório mais produtivo com a EasyJur.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <ShimmerButton className="text-lg" onClick={onCTAClick}>
-                EXPERIMENTE GRÁTIS AGORA
-                <ArrowRight className="w-5 h-5" />
+            <div className="flex flex-col sm:flex-row gap-3">
+              <ShimmerButton onClick={onCTAClick}>
+                Experimente Grátis
+                <ArrowRight className="w-4 h-4" />
               </ShimmerButton>
-              <button className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full border-2 border-gray-200 text-gray-700 font-semibold hover:border-primary hover:text-primary transition-colors">
-                <Play className="w-5 h-5" />
-                Ver demonstração
+              <button className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:border-primary hover:text-primary transition-colors whitespace-nowrap">
+                <Play className="w-4 h-4" />
+                Ver Demonstração
               </button>
             </div>
 
-            <div className="flex items-center gap-8 pt-4">
+            <div className="flex items-center gap-8 pt-2">
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
-                    className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs font-medium"
+                    className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xs font-medium"
                   >
                     {String.fromCharCode(64 + i)}
                   </div>
@@ -85,7 +84,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
                     </svg>
                   ))}
                 </div>
-                <p className="text-sm text-gray-500">Mais de 10.000 advogados satisfeitos</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Mais de 10 mil advogados</p>
               </div>
             </div>
           </motion.div>
@@ -96,71 +95,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] max-w-lg mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl transform rotate-3" />
-              <div className="absolute inset-0 bg-white rounded-3xl shadow-2xl overflow-hidden">
-                <div className="absolute top-4 left-4 right-4 h-8 bg-gray-100 rounded-full flex items-center px-4 gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-400" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <div className="w-3 h-3 rounded-full bg-green-400" />
-                </div>
-                
-                <div className="pt-16 p-6 space-y-4">
-                  <div className="h-4 bg-gray-100 rounded w-3/4" />
-                  <div className="h-4 bg-gray-100 rounded w-1/2" />
-                  <div className="h-32 bg-gradient-to-r from-red-50 to-red-100 rounded-xl border border-red-200 p-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                        <span className="text-primary text-lg">⚖</span>
-                      </div>
-                      <div>
-                        <div className="h-3 bg-red-200 rounded w-24 mb-1" />
-                        <div className="h-2 bg-red-100 rounded w-16" />
-                      </div>
-                    </div>
-                    <div className="h-2 bg-red-200 rounded w-full mb-2" />
-                    <div className="h-2 bg-red-100 rounded w-2/3" />
-                  </div>
-                  
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="h-20 bg-gray-50 rounded-xl p-3">
-                      <div className="h-8 w-8 rounded-lg bg-primary/10 mb-2" />
-                      <div className="h-2 bg-gray-200 rounded w-full" />
-                    </div>
-                    <div className="h-20 bg-gray-50 rounded-xl p-3">
-                      <div className="h-8 w-8 rounded-lg bg-primary/10 mb-2" />
-                      <div className="h-2 bg-gray-200 rounded w-full" />
-                    </div>
-                    <div className="h-20 bg-gray-50 rounded-xl p-3">
-                      <div className="h-8 w-8 rounded-lg bg-primary/10 mb-2" />
-                      <div className="h-2 bg-gray-200 rounded w-full" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -left-8 top-1/4 w-24 h-24 bg-white rounded-2xl shadow-xl p-3 flex items-center justify-center"
-              >
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">98%</div>
-                  <div className="text-xs text-gray-500">Satisfação</div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -right-4 bottom-1/4 w-20 h-20 bg-white rounded-2xl shadow-xl p-3 flex items-center justify-center"
-              >
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-black">🏆</div>
-                  <div className="text-xs text-gray-500">Top 1</div>
-                </div>
-              </motion.div>
-            </div>
+            <DashboardMockup />
           </motion.div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X, Sun, Moon } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 interface NavItem {
@@ -64,6 +64,38 @@ function ShimmerButton({ children, className }: ShimmerButtonProps) {
     >
       <span className="relative z-10">{children}</span>
       <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_2s_infinite]" />
+    </button>
+  );
+}
+
+interface ThemeToggleProps {
+  isDark: boolean;
+  onToggle: () => void;
+}
+
+function ThemeToggle({ isDark, onToggle }: ThemeToggleProps) {
+  return (
+    <button
+      onClick={onToggle}
+      className={cn(
+        "relative w-14 h-8 rounded-full transition-colors duration-300",
+        isDark ? "bg-gray-800" : "bg-gray-200"
+      )}
+    >
+      <motion.div
+        animate={{ x: isDark ? 26 : 2 }}
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        className={cn(
+          "absolute top-1 w-6 h-6 rounded-full flex items-center justify-center transition-colors",
+          isDark ? "bg-primary" : "bg-yellow-400"
+        )}
+      >
+        {isDark ? (
+          <Moon className="w-3.5 h-3.5 text-white" strokeWidth={2} />
+        ) : (
+          <Sun className="w-3.5 h-3.5 text-white" strokeWidth={2} />
+        )}
+      </motion.div>
     </button>
   );
 }
@@ -132,22 +164,11 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <button
-              onClick={onToggleDarkMode}
-              className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              <div className="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center">
-                {isDarkMode ? (
-                  <div className="w-2 h-2 bg-black rounded-full" />
-                ) : (
-                  <div className="w-2 h-2 bg-yellow-400 rounded-full" />
-                )}
-              </div>
-            </button>
-            <button className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+            <button className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
               Entrar
             </button>
             <ShimmerButton>Testar 7 dias Grátis</ShimmerButton>
+            <ThemeToggle isDark={isDarkMode} onToggle={onToggleDarkMode || (() => {})} />
           </div>
 
           <button
