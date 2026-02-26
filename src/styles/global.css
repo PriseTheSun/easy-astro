@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
   --color-primary: #E5293F;
   --color-primary-dark: #A82130;
@@ -9,7 +11,7 @@
   --color-gray-dark: #7F919A;
   --color-black: #191919;
   --color-white: #F9F9F9;
-  
+
   --font-montserrat: 'Montserrat', sans-serif;
 }
 
@@ -102,4 +104,16 @@ html {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #606060;
+}
+
+@theme inline {
+  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
+  @keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
+  }
 }

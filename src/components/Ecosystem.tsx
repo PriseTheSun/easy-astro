@@ -1,47 +1,6 @@
 import { motion } from 'framer-motion';
+import { OrbitingCircles } from '@/components/ui/orbiting-circles';
 import { Scale, Building2, FileText, DollarSign, Calendar, Users, MessageSquare, Shield } from 'lucide-react';
-
-function OrbitingCircles({ 
-  children, 
-  radius = 100, 
-  speed = 1, 
-  reverse = false,
-  iconSize = 40 
-}: { 
-  children: React.ReactNode[];
-  radius?: number;
-  speed?: number;
-  reverse?: boolean;
-  iconSize?: number;
-}) {
-  const childArray = Array.isArray(children) ? children : [children];
-  
-  return (
-    <motion.div
-      className="absolute inset-0 flex items-center justify-center"
-      animate={{ rotate: reverse ? 360 : -360 }}
-      transition={{ duration: 20 / speed, repeat: Infinity, ease: "linear" }}
-    >
-      {childArray.map((child, index) => {
-        const angle = (index * 360) / childArray.length;
-        const x = Math.cos((angle * Math.PI) / 180) * radius;
-        const y = Math.sin((angle * Math.PI) / 180) * radius;
-        
-        return (
-          <motion.div
-            key={index}
-            className="absolute"
-            style={{
-              transform: `translate(${x}px, ${y}px)`,
-            }}
-          >
-            {child}
-          </motion.div>
-        );
-      })}
-    </motion.div>
-  );
-}
 
 const orbitItems = [
   { icon: Scale, color: "#E5293F" },
@@ -82,75 +41,44 @@ export default function Ecosystem() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative w-[300px] h-[300px]"
+            className="relative w-[600px] h-[600px] flex items-center justify-center"
           >
-            <svg className="absolute inset-0 w-full h-full pointer-events-none">
-              <circle
-                cx="50%"
-                cy="50%"
-                r="140"
-                fill="none"
-                stroke="url(#orbitGradient)"
-                strokeWidth="2"
-                strokeDasharray="4 8"
-                opacity="0.4"
-              />
-              <circle
-                cx="50%"
-                cy="50%"
-                r="220"
-                fill="none"
-                stroke="url(#orbitGradient)"
-                strokeWidth="2"
-                strokeDasharray="8 12"
-                opacity="0.6"
-              />
-              <defs>
-                <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#E5293F" />
-                  <stop offset="100%" stopColor="#A82130" />
-                </linearGradient>
-              </defs>
-            </svg>
-
-            <OrbitingCircles radius={140} speed={1}>
+            <OrbitingCircles iconSize={56} radius={220}>
               {orbitItems.slice(0, 4).map((item, idx) => (
-                <motion.div
+                <div
                   key={idx}
-                  whileHover={{ scale: 1.1 }}
                   className="w-14 h-14 rounded-full bg-white shadow-lg border-2 border-gray-100 flex items-center justify-center cursor-pointer"
                   style={{ borderColor: item.color }}
                 >
-                  <item.icon className="w-6 h-6" style={{ color: item.color }} />
-                </motion.div>
+                  <item.icon className="w-7 h-7" style={{ color: item.color }} />
+                </div>
               ))}
             </OrbitingCircles>
 
-            <OrbitingCircles radius={220} speed={0.7} reverse>
+            <OrbitingCircles iconSize={48} radius={140} reverse speed={2}>
               {orbitItems.slice(4, 8).map((item, idx) => (
-                <motion.div
+                <div
                   key={idx}
-                  whileHover={{ scale: 1.1 }}
                   className="w-12 h-12 rounded-full bg-white shadow-lg border-2 border-gray-100 flex items-center justify-center cursor-pointer"
                   style={{ borderColor: item.color }}
                 >
-                  <item.icon className="w-5 h-5" style={{ color: item.color }} />
-                </motion.div>
+                  <item.icon className="w-6 h-6" style={{ color: item.color }} />
+                </div>
               ))}
             </OrbitingCircles>
 
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", duration: 0.8 }}
-                className="w-28 h-28 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-xl"
+                className="w-24 h-24 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-xl"
               >
                 <img 
                   src="/favicon.svg" 
                   alt="EasyJur" 
-                  className="w-16 h-16"
+                  className="w-14 h-14"
                 />
               </motion.div>
             </div>
