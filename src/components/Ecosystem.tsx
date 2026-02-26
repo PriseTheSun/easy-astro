@@ -15,8 +15,8 @@ const orbitItems = [
 
 export default function Ecosystem() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white" />
+    <section className="py-24 bg-white dark:bg-black relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -26,11 +26,11 @@ export default function Ecosystem() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#191919] mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             A plataforma de gestão jurídica{' '}
             <span className="text-gradient">mais completa do Brasil.</span>
           </h2>
-          <p className="text-lg text-[#7F919A] max-w-3xl mx-auto">
+          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-3xl mx-auto">
             Tudo o que você precisa em uma única solução tecnológica para advogados e departamentos jurídicos.
           </p>
         </motion.div>
@@ -47,7 +47,7 @@ export default function Ecosystem() {
               {orbitItems.slice(0, 4).map((item, idx) => (
                 <div
                   key={idx}
-                  className="w-14 h-14 rounded-full bg-white shadow-lg border-2 border-gray-100 flex items-center justify-center cursor-pointer"
+                  className="w-14 h-14 rounded-full bg-white dark:bg-gray-800 shadow-lg border-2 border-gray-100 dark:border-gray-700 flex items-center justify-center cursor-pointer"
                   style={{ borderColor: item.color }}
                 >
                   <item.icon className="w-7 h-7" style={{ color: item.color }} />
@@ -59,7 +59,7 @@ export default function Ecosystem() {
               {orbitItems.slice(4, 8).map((item, idx) => (
                 <div
                   key={idx}
-                  className="w-12 h-12 rounded-full bg-white shadow-lg border-2 border-gray-100 flex items-center justify-center cursor-pointer"
+                  className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg border-2 border-gray-100 dark:border-gray-700 flex items-center justify-center cursor-pointer"
                   style={{ borderColor: item.color }}
                 >
                   <item.icon className="w-6 h-6" style={{ color: item.color }} />
@@ -73,7 +73,7 @@ export default function Ecosystem() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", duration: 0.8 }}
-                className="w-24 h-24 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-xl"
+                className="w-24 h-24 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center shadow-xl"
               >
                 <img 
                   src="/favicon.svg" 

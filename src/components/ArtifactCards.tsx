@@ -256,7 +256,7 @@ function ProtocolScheduler() {
 
   return (
     <motion.div 
-      className="bg-white rounded-2xl p-6 border border-gray-200 h-full"
+      className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 h-full"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -265,7 +265,7 @@ function ProtocolScheduler() {
     >
       <div className="flex items-center justify-between mb-6">
         <motion.h4 
-          className="font-semibold text-black"
+          className="font-semibold text-black dark:text-white"
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
@@ -378,7 +378,7 @@ function ProtocolScheduler() {
 
 export default function ArtifactCards() {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -387,11 +387,11 @@ export default function ArtifactCards() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-6">
             Tudo o que seu escritório de advocacia precisa.{' '}
             <span className="text-gradient">Tudo o que as bancas jurídicas pedem.</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             A um clique de distância.
           </p>
         </motion.div>

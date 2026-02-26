@@ -112,7 +112,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
         "relative rounded-3xl overflow-hidden transition-all duration-300",
         plan.popular 
           ? 'bg-black border-2 border-black shadow-2xl shadow-primary/20' 
-          : 'bg-white border border-gray-200 shadow-xl hover:shadow-2xl'
+          : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl'
       )}
     >
       {plan.popular && (
@@ -127,11 +127,11 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
         <div className="mb-6">
           <h3 className={cn(
             "text-2xl font-bold mb-2",
-            plan.popular ? 'text-white' : 'text-black'
+            plan.popular ? 'text-white' : 'text-black dark:text-white'
           )}>
             {plan.name}
           </h3>
-          <p className={plan.popular ? 'text-gray-400' : 'text-gray-600'}>
+          <p className={plan.popular ? 'text-gray-400' : 'text-gray-600 dark:text-gray-400'}>
             {plan.description}
           </p>
         </div>
@@ -178,7 +178,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           <div className="mb-8">
             <h4 className={cn(
               "text-sm font-semibold mb-3",
-              plan.popular ? 'text-white' : 'text-gray-900'
+              plan.popular ? 'text-white' : 'text-gray-900 dark:text-white'
             )}>
               Extras do Plano
             </h4>
@@ -194,7 +194,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
                       plan.popular ? 'text-white' : 'text-primary'
                     )} />
                   </div>
-                  <span className={plan.popular ? 'text-gray-400 text-sm' : 'text-gray-600 text-sm'}>
+                  <span className={plan.popular ? 'text-gray-400 text-sm' : 'text-gray-600 dark:text-gray-400 text-sm'}>
                     {extra}
                   </span>
                 </div>
@@ -208,7 +208,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
             "w-full py-4 rounded-full font-semibold flex items-center justify-center gap-2 transition-all duration-300",
             plan.popular 
               ? 'bg-white text-black hover:bg-gray-100' 
-              : 'bg-black text-white hover:bg-gray-900'
+              : 'bg-black dark:bg-white text-white dark:text-black hover:bg-gray-900 dark:hover:bg-gray-200'
           )}
         >
           {plan.buttonText}
@@ -221,7 +221,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
 
 export default function Pricing() {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -230,11 +230,11 @@ export default function Pricing() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-6">
             Encontre o plano perfeito para você,{' '}
             <span className="text-gradient">seu escritório ou empresa.</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Escolha o plano ideal para as necessidades do seu escritório. 
             Todos os planos incluem suporte dedicado e atualizações gratuitas.
           </p>

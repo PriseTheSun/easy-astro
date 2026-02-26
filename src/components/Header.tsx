@@ -121,7 +121,7 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
   return (
     <header className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      scrolled ? "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm" : "bg-white border-b border-transparent"
+      scrolled ? "bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm" : "bg-white dark:bg-black border-b border-transparent"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -140,7 +140,7 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
                 <button
                   className={cn(
                     "flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors",
-                    activeDropdown === item.label ? "text-primary" : "text-gray-700 hover:text-primary"
+                    activeDropdown === item.label ? "text-primary" : "text-gray-700 dark:text-gray-300 hover:text-primary"
                   )}
                 >
                   {item.label}
@@ -154,13 +154,13 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2"
+                      className="-0 mt-absolute top-full left2 w-64 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 py-2"
                     >
                       {item.children.map((child) => (
                         <a
                           key={child.label}
                           href={child.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors"
+                          className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                         >
                           {child.label}
                         </a>
@@ -173,7 +173,7 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <button className="text-sm font-semibold text-gray-900 hover:text-primary transition-colors">
+            <button className="text-sm font-semibold text-gray-900 dark:text-white hover:text-primary transition-colors">
               Entrar
             </button>
             <ShimmerButton>Testar 7 dias Grátis</ShimmerButton>
@@ -195,13 +195,13 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-gray-100"
+            className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800"
           >
             <div className="px-4 py-4 space-y-2">
               {navItems.map((item) => (
                 <div key={item.label}>
                   <button
-                    className="flex items-center justify-between w-full py-2 text-gray-700 font-medium"
+                    className="flex items-center justify-between w-full py-2 text-gray-700 dark:text-gray-300 font-medium"
                     onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
                   >
                     {item.label}
@@ -216,7 +216,7 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
                         className="pl-4 space-y-1"
                       >
                         {item.children.map((child) => (
-                          <a key={child.label} href={child.href} className="block py-2 text-sm text-gray-600">
+                          <a key={child.label} href={child.href} className="block py-2 text-sm text-gray-600 dark:text-gray-400">
                             {child.label}
                           </a>
                         ))}

@@ -103,8 +103,8 @@ function ReviewCard({
     <figure
       className={cn(
         "relative h-full w-80 cursor-pointer overflow-hidden rounded-xl border p-4",
-        "border-gray-200 bg-white shadow-sm hover:shadow-md",
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+        "border-gray-200 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md dark:border-gray-700",
+        "dark:hover:bg-gray-700"
       )}
     >
       <div className="flex flex-row items-center gap-2 mb-3">
@@ -112,7 +112,7 @@ function ReviewCard({
           {name.charAt(0)}
         </div>
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-black">
+          <figcaption className="text-sm font-medium text-gray-900 dark:text-white">
             {name}
           </figcaption>
           <p className="text-xs font-medium text-gray-500">{username}</p>
@@ -123,7 +123,7 @@ function ReviewCard({
           <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
         ))}
       </div>
-      <blockquote className="text-sm text-gray-600 dark:text-gray-700">{body}</blockquote>
+      <blockquote className="text-sm text-gray-600 dark:text-gray-300">{body}</blockquote>
     </figure>
   );
 }
@@ -132,7 +132,7 @@ export default function TestimonialsFAQ() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -141,7 +141,7 @@ export default function TestimonialsFAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-6">
             O que nossos clientes{' '}
             <span className="text-gradient">dizem sobre nós.</span>
           </h2>
@@ -172,8 +172,8 @@ export default function TestimonialsFAQ() {
               />
             ))}
           </Marquee>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-gray-50"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-gray-50"></div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-gray-50 dark:from-gray-900"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-gray-50 dark:from-gray-900"></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
@@ -197,12 +197,12 @@ export default function TestimonialsFAQ() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white rounded-2xl p-6 text-center border border-gray-200 hover:border-primary/30 hover:shadow-lg transition-all"
+                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center border border-gray-200 dark:border-gray-700 hover:border-primary/30 hover:shadow-lg transition-all"
                 >
                   <div className="h-16 flex items-center justify-center mb-3">
                     <img src={partner.img.src} alt={partner.name} className="max-h-full max-w-full object-contain" />
                   </div>
-                  <div className="text-sm text-gray-600">{partner.desc}</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">{partner.desc}</div>
                 </motion.div>
               ))}
             </div>
@@ -214,7 +214,7 @@ export default function TestimonialsFAQ() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold text-black mb-8">Perguntas Frequentes</h3>
+            <h3 className="text-2xl font-bold text-black dark:text-white mb-8">Perguntas Frequentes</h3>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <motion.div
@@ -223,13 +223,13 @@ export default function TestimonialsFAQ() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="border border-gray-200 rounded-xl overflow-hidden"
+                  className="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden bg-white dark:bg-gray-800"
                 >
                   <button
                     onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                    className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors"
+                    className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
-                    <span className="font-medium text-black pr-4">{faq.question}</span>
+                    <span className="font-medium text-black dark:text-white pr-4">{faq.question}</span>
                     {openFAQ === index ? (
                       <ChevronUp className="w-5 h-5 text-gray-400 flex-shrink-0" />
                     ) : (
@@ -244,7 +244,7 @@ export default function TestimonialsFAQ() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <p className="px-4 pb-4 text-gray-600">{faq.answer}</p>
+                        <p className="px-4 pb-4 text-gray-600 dark:text-gray-300">{faq.answer}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>

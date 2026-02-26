@@ -25,7 +25,7 @@ function ShimmerButton({ children, className, onClick }: { children: React.React
 
 export default function Hero({ onCTAClick }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#F9F9F9]">
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -37,11 +37,11 @@ export default function Hero({ onCTAClick }: HeroProps) {
             <span className="text-sm font-semibold text-primary">A plataforma nº #1 em eficiência jurídica.</span>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-              <span className="text-gray-900">Software Jurídico com </span>
+              <span className="text-black dark:text-white">Software Jurídico com </span>
               <span className="text-gradient">Inteligência Artificial</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-gray-900 max-w-xl">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-xl">
               Você foca no Direito, nós cuidamos da gestão. Automatize tarefas, controle prazos 
               e tenha um escritório mais produtivo com a EasyJur.
             </p>
@@ -51,7 +51,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
                 Experimente Grátis
                 <ArrowRight className="w-4 h-4" />
               </ShimmerButton>
-              <button className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 border-gray-300 text-gray-900 font-semibold hover:border-primary hover:text-primary transition-colors whitespace-nowrap bg-white">
+              <button className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white font-semibold hover:border-primary hover:text-primary transition-colors whitespace-nowrap bg-white dark:bg-gray-800">
                 <Play className="w-4 h-4" />
                 Ver Demonstração
               </button>
@@ -62,7 +62,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
-                    className="w-10 h-10 rounded-full border-2 border-[#F9F9F9] bg-gray-300 flex items-center justify-center text-xs font-medium"
+                    className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900 bg-gray-300 dark:bg-gray-700 flex items-center justify-center text-xs font-medium"
                   >
                     {String.fromCharCode(64 + i)}
                   </div>
@@ -76,7 +76,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
                     </svg>
                   ))}
                 </div>
-                <p className="text-sm text-gray-600">Mais de 10 mil advogados</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Mais de 10 mil advogados</p>
               </div>
             </div>
           </motion.div>

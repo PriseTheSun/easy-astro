@@ -268,7 +268,7 @@ function RandomCalendarDays() {
 
 export default function Diferenciais() {
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-[#F9F9F9]">
+    <section className="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -277,11 +277,11 @@ export default function Diferenciais() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Otimize sua rotina, escale seu escritório e{' '}
             <span className="text-gradient">conquiste mais resultados.</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             A EasyJur é a plataforma de gestão jurídica que integra todas as áreas do seu escritório
             em um só lugar, permitindo que você tome decisões baseadas em dados e foque no que
             realmente importa: seus clientes.
@@ -299,11 +299,11 @@ export default function Diferenciais() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 bg-[#F9F9F9] rounded-3xl p-8 lg:p-12 border border-gray-200"
+          className="mt-16 bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 lg:p-12 border border-gray-200 dark:border-gray-700"
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-[#191919] mb-6">Recursos Incluídos</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Recursos Incluídos</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   'Gestão de Processos',
@@ -320,28 +320,28 @@ export default function Diferenciais() {
                     transition={{ delay: idx * 0.1 }}
                     className="flex items-center gap-3"
                   >
-                    <div className="w-6 h-6 rounded-full bg-[#E5293F] flex items-center justify-center flex-shrink-0">
+                    <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                       <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
                     </div>
-                    <span className="text-[#191919] font-medium text-sm">{feature}</span>
+                    <span className="text-gray-900 dark:text-white font-medium text-sm">{feature}</span>
                   </motion.div>
                 ))}
               </div>
             </div>
             <div className="relative">
-              <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+              <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 border border-gray-200 dark:border-gray-600 shadow-sm">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <div className="text-4xl font-bold text-[#191919]">85%</div>
-                    <div className="text-[#7F919A] text-sm mt-1">Aumento de produtividade</div>
+                    <div className="text-4xl font-bold text-gray-900 dark:text-white">85%</div>
+                    <div className="text-gray-500 dark:text-gray-400 text-sm mt-1">Aumento de produtividade</div>
                   </div>
-                  <div className="w-12 h-12 rounded-xl bg-[#E5293F] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                   </div>
                 </div>
-                <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-3 bg-gray-100 dark:bg-gray-600 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: '85%' }}

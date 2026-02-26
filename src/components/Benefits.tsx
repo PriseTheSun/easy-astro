@@ -128,7 +128,7 @@ export default function Benefits() {
   }, [isHovered]);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#F9F9F9] to-white">
+    <section className="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -137,11 +137,11 @@ export default function Benefits() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Tudo o que seu escritório de advocacia precisa.{' '}
             <span className="text-gradient">Tudo em um clique.</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             A um clique de distância, você tem acesso a todas as ferramentas necessárias para 
             uma gestão jurídica eficiente e moderna.
           </p>
@@ -167,22 +167,22 @@ export default function Benefits() {
                 onMouseLeave={() => setIsHovered(false)}
                 className={`relative flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all ${
                   index === activeIndex 
-                    ? 'bg-white shadow-md' 
-                    : 'bg-transparent hover:bg-white/50'
+                    ? 'bg-white dark:bg-gray-800 shadow-md' 
+                    : 'bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800/50'
                 }`}
               >
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                  index === activeIndex ? 'bg-primary' : 'bg-gray-200'
+                  index === activeIndex ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-700'
                 }`}>
-                  <benefit.icon className={`w-5 h-5 ${index === activeIndex ? 'text-white' : 'text-gray-500'}`} />
+                  <benefit.icon className={`w-5 h-5 ${index === activeIndex ? 'text-white' : 'text-gray-500 dark:text-gray-400'}`} />
                 </div>
                 <div className="flex-1 pr-4">
-                  <h3 className={`font-medium ${index === activeIndex ? 'text-gray-900' : 'text-gray-500'}`}>
+                  <h3 className={`font-medium ${index === activeIndex ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
                     {benefit.title}
                   </h3>
                 </div>
                 {index === activeIndex && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-100 rounded-b-xl overflow-hidden">
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-100 dark:bg-gray-700 rounded-b-xl overflow-hidden">
                     <motion.div
                       className="h-full bg-primary"
                       initial={{ width: 0 }}
@@ -204,7 +204,7 @@ export default function Benefits() {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -232,19 +232,19 @@ export default function Benefits() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="mt-4 p-5 bg-gray-50 rounded-xl"
+                    className="mt-4 p-5 bg-gray-50 dark:bg-gray-700 rounded-xl"
                   >
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                       {benefits[activeIndex].title}
                     </h4>
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                       {benefits[activeIndex].description}
                     </p>
                   </motion.div>
                 </motion.div>
               </AnimatePresence>
 
-              <div className="flex justify-center gap-2 py-4 bg-white">
+              <div className="flex justify-center gap-2 py-4 bg-white dark:bg-gray-800">
                 {benefits.map((_, i) => (
                   <button
                     key={i}
@@ -253,7 +253,7 @@ export default function Benefits() {
                       setProgress(0);
                     }}
                     className={`h-1.5 rounded-full transition-all ${
-                      i === activeIndex ? 'w-8 bg-primary' : 'w-2 bg-gray-300 hover:bg-gray-400'
+                      i === activeIndex ? 'w-8 bg-primary' : 'w-2 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400'
                     }`}
                   />
                 ))}
