@@ -63,7 +63,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
               </button>
             </div>
 
-            <div className="flex items-center gap-8 pt-2">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 pt-2">
               <div className="flex -space-x-3">
                 {[profile1, profile2, profile3, profile4, profile5].map((img, idx) => (
                   <img

@@ -223,7 +223,7 @@ function ProcessDonut() {
 
 export default function Dashboard() {
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-black dark:to-black">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-black dark:to-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -248,13 +248,13 @@ export default function Dashboard() {
           <StatCard icon={Award} label="Taxa de Sucesso" value="94%" trend="+3%" color="#E5293F" />
         </div>
 
-        <div className="grid grid-cols-6 grid-rows-5 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 lg:grid-rows-5 gap-4 mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="col-span-6 row-span-2 row-start-1 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700"
+            className="col-span-1 sm:col-span-2 lg:col-span-6 lg:row-span-2 lg:row-start-1 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700"
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -292,7 +292,7 @@ export default function Dashboard() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="col-span-3 row-span-3 col-start-1 row-start-3 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700"
+            className="col-span-1 sm:col-span-1 lg:col-span-3 lg:row-span-3 lg:col-start-1 lg:row-start-3 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -308,7 +308,7 @@ export default function Dashboard() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="col-span-3 row-span-3 col-start-4 row-start-3 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700"
+            className="col-span-1 sm:col-span-1 lg:col-span-3 lg:row-span-3 lg:col-start-4 lg:row-start-3 bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">

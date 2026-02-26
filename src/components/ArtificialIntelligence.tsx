@@ -77,7 +77,7 @@ export default function ArtificialIntelligence() {
           ))}
         </div>
 
-        <div className="grid grid-cols-5 grid-rows-6 gap-3 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 lg:grid-rows-6 gap-3 mb-10">
           {aiFeatures.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -88,12 +88,13 @@ export default function ArtificialIntelligence() {
               whileHover={{ scale: 1.02 }}
               className={cn(
                 "group bg-[#0F0F0F] dark:bg-gray-800 rounded-2xl p-5 border border-gray-800 dark:border-gray-700 hover:border-[#E5293F]/50 transition-all cursor-pointer relative overflow-hidden",
-                index === 0 && "col-span-2 row-span-3",
-                index === 1 && "row-span-3 col-start-3",
-                index === 2 && "col-span-2 row-span-4 col-start-4",
-                index === 3 && "row-span-3 row-start-4",
-                index === 4 && "col-span-2 row-span-3 row-start-4",
-                index === 5 && "col-span-2 row-span-2 col-start-4 row-start-5"
+                "col-span-1",
+                index === 0 && "sm:col-span-2 lg:col-span-2 lg:row-span-3",
+                index === 1 && "lg:row-span-3 lg:col-start-3",
+                index === 2 && "sm:col-span-2 lg:col-span-2 lg:row-span-4 lg:col-start-4",
+                index === 3 && "lg:row-span-3 lg:row-start-4",
+                index === 4 && "sm:col-span-2 lg:col-span-2 lg:row-span-3 lg:row-start-4",
+                index === 5 && "sm:col-span-2 lg:col-span-2 lg:row-span-2 lg:col-start-4 lg:row-start-5"
               )}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#E5293F]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

@@ -35,13 +35,13 @@ export default function Ecosystem() {
           </p>
         </motion.div>
 
-        <div className="relative h-[500px] flex items-center justify-center">
+        <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative w-[600px] h-[600px] flex items-center justify-center"
+            className="relative w-[300px] sm:w-[400px] lg:w-[600px] h-[300px] sm:h-[400px] lg:h-[600px] flex items-center justify-center"
           >
             <OrbitingCircles iconSize={56} radius={220}>
               {orbitItems.slice(0, 4).map((item, idx) => (

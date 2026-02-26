@@ -410,13 +410,13 @@ export default function ArtifactCards() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-6 grid-rows-6 gap-[60px]">
+        <div className="grid grid-cols-1 lg:grid-cols-6 lg:grid-rows-6 gap-4 lg:gap-[60px]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="col-span-3 row-span-6"
+            className="col-span-1 lg:col-span-3 lg:row-span-6"
           >
             <h3 className="text-lg font-semibold text-black dark:text-white mb-4 text-start">Benefícios</h3>
             <AnimatedBenefitsList />
@@ -427,7 +427,7 @@ export default function ArtifactCards() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="col-span-3 row-span-3 col-start-4"
+            className="col-span-1 lg:col-span-3 lg:row-span-3 lg:col-start-4"
           >
             <h3 className="text-lg font-semibold text-black dark:text-white mb-4 text-start">Automações trabalhando por você</h3>
             <TelemetryTypewriter />
@@ -438,7 +438,7 @@ export default function ArtifactCards() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="col-span-3 row-span-3 col-start-4 row-start-4"
+            className="col-span-1 lg:col-span-3 lg:row-span-3 lg:col-start-4 lg:row-start-4"
           >
             <ProtocolScheduler />
           </motion.div>

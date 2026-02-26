@@ -34,7 +34,7 @@ const features = [
     description: "Organize e encontre qualquer documento em segundos.",
     href: "#",
     cta: "Saiba mais",
-    className: "col-span-3 lg:col-span-1",
+    className: "md:col-span-1 lg:col-span-1",
     background: (
       <motion.div
         initial={{ opacity: 0 }}
@@ -77,7 +77,7 @@ const features = [
     description: "Receba alertas sobre prazos, movimentações e tarefas.",
     href: "#",
     cta: "Saiba mais",
-    className: "col-span-3 lg:col-span-2",
+    className: "md:col-span-2 lg:col-span-2",
     background: (
       <div className="absolute top-16 right-4 w-72">
         <div className="space-y-3">
@@ -128,7 +128,7 @@ const features = [
     description: "Conecte com tribunais, OAB e mais de 100 ferramentas.",
     href: "#",
     cta: "Saiba mais",
-    className: "col-span-3 lg:col-span-2",
+    className: "md:col-span-2 lg:col-span-2",
     background: (
       <div className="absolute top-10 right-4 w-full max-w-md">
         <motion.div
@@ -192,7 +192,7 @@ const features = [
     description: "Nunca perca um prazo com o calendário inteligente.",
     href: "#",
     cta: "Saiba mais",
-    className: "col-span-3 lg:col-span-1",
+    className: "md:col-span-1 lg:col-span-1",
     background: (
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -268,7 +268,7 @@ function RandomCalendarDays() {
 
 export default function Diferenciais() {
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900">
+    <section className="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
