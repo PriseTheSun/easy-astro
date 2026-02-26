@@ -43,7 +43,7 @@ export default function CTASection() {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute top-8 -right-4 w-20 h-20 bg-white rounded-2xl shadow-xl p-3 flex items-center justify-center z-10"
+                className="absolute top-0 -right-4 w-20 h-20 bg-white rounded-2xl shadow-xl p-3 flex items-center justify-center z-10"
               >
                 <MessageCircle className="w-8 h-8 text-primary" />
               </motion.div>
