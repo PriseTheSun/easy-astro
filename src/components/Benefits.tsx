@@ -1,44 +1,131 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, FileText, Calendar, DollarSign, Folder, BarChart3 } from 'lucide-react';
+import { Check, BarChart3, Scale, FileText, Clock, Brain, TrendingUp, Wallet, X, ZoomIn } from 'lucide-react';
+import { createPortal } from 'react-dom';
+
+import dashboardImg from '../assets/images/dashboard-analytics.png';
+import consultivoImg from '../assets/images/consultivo-II.png';
+import contenciosoImg from '../assets/images/contenciosoII.png';
+import automacaoImg from '../assets/images/automatizacao-de-docs.png';
+import prazosImg from '../assets/images/controle-prazos.png';
+import comercialImg from '../assets/images/novos-negocios.png';
+import fluxoImg from '../assets/images/fluxo-de-caixa.png';
 
 const benefits = [
   {
-    icon: Calendar,
-    title: 'Gestão de Processos e Prazos',
-    description: 'Controle total sobre os andamentos e tribunais.',
+    icon: BarChart3,
+    title: 'Dashboard Analytics',
+    description: 'Acompanhe os principais indicadores do seu escritório em Tempo real e tome decisões mais estratégicas com insights visuais e gráficos interativos.',
+    image: dashboardImg,
+  },
+  {
+    icon: Scale,
+    title: 'Gestão da Área Consultiva',
+    description: 'Organize e otimize os processos consultivos do seu escritório, garantindo mais eficiência no atendimento aos clientes.',
+    image: consultivoImg,
   },
   {
     icon: FileText,
-    title: 'Publicações e Intimações',
-    description: 'Receba e trate suas notificações automaticamente.',
+    title: 'Gestão Completa Contencioso',
+    description: 'Gerencie todos os casos contenciosos de forma centralizada, acompanhando prazos, processos e movimentações jurídicas.',
+    image: contenciosoImg,
   },
   {
-    icon: DollarSign,
-    title: 'Gestão Financeira Completa',
-    description: 'Fluxo de caixa, honorários, DRE e emissão de notas.',
+    icon: Clock,
+    title: 'Automatização de Documentos',
+    description: 'Reduza o tempo gasto com burocracias utilizando ferramentas de automação para criação e gerenciamento de documentos.',
+    image: automacaoImg,
   },
   {
-    icon: Folder,
-    title: 'GED (Gestão de Documentos)',
-    description: 'Armazenamento em nuvem seguro e organizado.',
+    icon: Brain,
+    title: 'Controle de Prazos e Audiências com IA',
+    description: 'Nunca mais perca um prazo! Utilize inteligência artificial para monitoramento e alertas automáticos de compromissos.',
+    image: prazosImg,
   },
   {
-    icon: BarChart3,
-    title: 'Relatórios Customizados',
-    description: 'Informações precisas para a tomada de decisão.',
+    icon: TrendingUp,
+    title: 'Gestão Comercial Estratégica',
+    description: 'Potencialize seus resultados com uma gestão comercial eficaz, acompanhando leads, oportunidades e fechamentos.',
+    image: comercialImg,
+  },
+  {
+    icon: Wallet,
+    title: 'Fluxo de Caixa Financeiro Automatizado',
+    description: 'Controle as finanças do seu escritório de forma centralizada e automática, garantindo previsibilidade e segurança.',
+    image: fluxoImg,
   },
 ];
 
+const SLIDE_DURATION = 6000;
+
+function ImageModal({ image, title, isOpen, onClose }: { image: string; title: string; isOpen: boolean; onClose: () => void }) {
+  if (!isOpen) return null;
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        className="relative max-w-5xl max-h-[90vh] overflow-auto"
+        onClick={(e: React.MouseEvent) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors"
+        >
+          <X className="w-8 h-8" />
+        </button>
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-auto rounded-lg shadow-2xl"
+        />
+      </motion.div>
+    </motion.div>,
+    document.body
+  );
+}
+
 export default function Benefits() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const progressRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % benefits.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+    const startTime = Date.now();
+    
+    const updateProgress = () => {
+      if (!isHovered) {
+        const elapsed = Date.now() - startTime + (activeIndex * SLIDE_DURATION);
+        const newProgress = (elapsed % SLIDE_DURATION) / SLIDE_DURATION;
+        setProgress(newProgress);
+      }
+    };
+
+    intervalRef.current = setInterval(() => {
+      if (!isHovered) {
+        setActiveIndex((prev) => (prev + 1) % benefits.length);
+        setProgress(0);
+      }
+    }, SLIDE_DURATION);
+
+    progressRef.current = setInterval(updateProgress, 16);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (progressRef.current) clearInterval(progressRef.current);
+    };
+  }, [isHovered]);
 
   return (
     <section className="py-24 bg-gradient-to-b from-[#F9F9F9] to-white">
@@ -66,7 +153,7 @@ export default function Benefits() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-4"
+            className="space-y-2"
           >
             {benefits.map((benefit, index) => (
               <motion.div
@@ -74,34 +161,36 @@ export default function Benefits() {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`flex items-start gap-4 p-6 rounded-2xl transition-all ${
-                  index === activeIndex ? 'bg-white border border-primary/30 shadow-md' : 'bg-gray-50 border border-gray-100'
+                transition={{ duration: 0.3, delay: index * 0.03 }}
+                onClick={() => setActiveIndex(index)}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                className={`relative flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all ${
+                  index === activeIndex 
+                    ? 'bg-white shadow-md' 
+                    : 'bg-transparent hover:bg-white/50'
                 }`}
               >
-                <motion.div
-                  animate={{ scale: index === activeIndex ? 1.1 : 1 }}
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    index === activeIndex ? 'bg-primary' : 'bg-gray-200'
-                  }`}
-                >
-                  <benefit.icon className="w-6 h-6 text-white" />
-                </motion.div>
-                <div className="flex-1">
-                  <h3 className={`text-lg font-semibold mb-1 ${
-                    index === activeIndex ? 'text-gray-900' : 'text-gray-700'
-                  }`}>
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                  index === activeIndex ? 'bg-primary' : 'bg-gray-200'
+                }`}>
+                  <benefit.icon className={`w-5 h-5 ${index === activeIndex ? 'text-white' : 'text-gray-500'}`} />
+                </div>
+                <div className="flex-1 pr-4">
+                  <h3 className={`font-medium ${index === activeIndex ? 'text-gray-900' : 'text-gray-500'}`}>
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-500">{benefit.description}</p>
                 </div>
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: index === activeIndex ? 1 : 0 }}
-                  className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center"
-                >
-                  <Check className="w-4 h-4 text-primary" />
-                </motion.div>
+                {index === activeIndex && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-100 rounded-b-xl overflow-hidden">
+                    <motion.div
+                      className="h-full bg-primary"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${progress * 100}%` }}
+                      transition={{ duration: 0.1 }}
+                    />
+                  </div>
+                )}
               </motion.div>
             ))}
           </motion.div>
@@ -112,67 +201,59 @@ export default function Benefits() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-3xl" />
-            <div className="relative bg-white rounded-3xl p-8 border border-gray-200 shadow-lg">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-3 h-3 rounded-full bg-red-400" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                <div className="w-3 h-3 rounded-full bg-green-400" />
-                <span className="ml-4 text-gray-500 text-sm">EasyJur Dashboard</span>
-              </div>
-
+            <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="space-y-4"
+                  className="p-3"
                 >
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${
-                      activeIndex === 0 ? 'from-blue-500 to-cyan-500' :
-                      activeIndex === 1 ? 'from-green-500 to-emerald-500' :
-                      activeIndex === 2 ? 'from-purple-500 to-pink-500' :
-                      activeIndex === 3 ? 'from-orange-500 to-yellow-500' :
-                      'from-red-500 to-pink-500'
-                    }`}>
-                      {(() => {
-                        const Icon = benefits[activeIndex].icon;
-                        return <Icon className="w-6 h-6 text-white" />;
-                      })()}
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold">{benefits[activeIndex].title}</h4>
-                      <p className="text-gray-400 text-sm">{benefits[activeIndex].description}</p>
+                  <div 
+                    className="relative group cursor-zoom-in"
+                    onClick={() => setLightboxOpen(true)}
+                  >
+                    <img
+                      src={benefits[activeIndex].image.src}
+                      alt={benefits[activeIndex].title}
+                      className="w-full h-auto rounded-xl object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                      <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
                     </div>
                   </div>
-
-                  <div className="grid grid-cols-3 gap-3">
-                    {[1, 2, 3].map((i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.1 * i }}
-                        className="h-20 bg-gray-800 rounded-xl flex items-center justify-center"
-                      >
-                        <span className="text-2xl">📊</span>
-                      </motion.div>
-                    ))}
-                  </div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="mt-4 p-5 bg-gray-50 rounded-xl"
+                  >
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                      {benefits[activeIndex].title}
+                    </h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {benefits[activeIndex].description}
+                    </p>
+                  </motion.div>
                 </motion.div>
               </AnimatePresence>
 
-              <div className="flex justify-center gap-2 mt-6">
+              <div className="flex justify-center gap-2 py-4 bg-white">
                 {benefits.map((_, i) => (
                   <button
                     key={i}
-                    onClick={() => setActiveIndex(i)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      i === activeIndex ? 'w-8 bg-primary' : 'bg-gray-700'
+                    onClick={() => {
+                      setActiveIndex(i);
+                      setProgress(0);
+                    }}
+                    className={`h-1.5 rounded-full transition-all ${
+                      i === activeIndex ? 'w-8 bg-primary' : 'w-2 bg-gray-300 hover:bg-gray-400'
                     }`}
                   />
                 ))}
@@ -181,6 +262,13 @@ export default function Benefits() {
           </motion.div>
         </div>
       </div>
+
+      <ImageModal
+        image={benefits[activeIndex].image.src}
+        title={benefits[activeIndex].title}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
     </section>
   );
 }
