@@ -154,7 +154,7 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="-0 mt-absolute top-full left2 w-64 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 py-2"
+                      className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 py-2"
                     >
                       {item.children.map((child) => (
                         <a
