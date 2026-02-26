@@ -36,13 +36,13 @@ const features = [
     cta: "Saiba mais",
     className: "col-span-3 lg:col-span-1",
     background: (
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="absolute top-10 left-0 right-0 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)]"
       >
-        <motion.div 
+        <motion.div
           animate={{ x: [0, -200, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
           className="flex gap-3 overflow-x-hidden pb-4 px-4"
@@ -91,8 +91,8 @@ const features = [
               key={idx}
               initial={{ opacity: 0, x: 30, scale: 0.95 }}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ 
-                delay: idx * 0.15, 
+              transition={{
+                delay: idx * 0.15,
                 type: "spring",
                 stiffness: 100,
                 damping: 15
@@ -103,13 +103,13 @@ const features = [
                 notification.urgent ? "border-l-4 border-l-[#E5293F]" : "border-gray-100"
               )}
             >
-              <motion.div 
+              <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity, delay: idx * 0.5 }}
                 className={cn(
                   "w-2 h-2 mt-2 rounded-full",
                   notification.urgent ? "bg-[#E5293F]" : "bg-gray-400"
-                )} 
+                )}
               />
               <div className="flex-1">
                 <p className="text-sm font-medium text-gray-900">{notification.title}</p>
@@ -131,7 +131,7 @@ const features = [
     className: "col-span-3 lg:col-span-2",
     background: (
       <div className="absolute top-10 right-4 w-full max-w-md">
-        <motion.div 
+        <motion.div
           className="flex items-center justify-center gap-6"
         >
           {[
@@ -145,21 +145,21 @@ const features = [
               key={idx}
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ 
-                delay: idx * 0.1, 
+              transition={{
+                delay: idx * 0.1,
                 type: "spring",
                 stiffness: 200,
                 damping: 15
               }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.15,
                 y: -5,
                 transition: { duration: 0.2 }
               }}
               className="flex flex-col items-center gap-2 cursor-pointer"
             >
-              <motion.div 
-                animate={{ 
+              <motion.div
+                animate={{
                   boxShadow: [
                     "0 0 0 0 rgba(229, 41, 63, 0.4)",
                     "0 0 0 8px rgba(229, 41, 63, 0)",
@@ -194,13 +194,13 @@ const features = [
     cta: "Saiba mais",
     className: "col-span-3 lg:col-span-1",
     background: (
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         className="absolute top-8 right-2"
       >
-        <motion.div 
+        <motion.div
           whileHover={{ scale: 1.02 }}
           className="bg-white/85 backdrop-blur-sm rounded-xl p-3 border border-gray-100 shadow-sm scale-65 origin-top-right"
         >
@@ -221,27 +221,27 @@ const features = [
 
 function RandomCalendarDays() {
   const [activeDay, setActiveDay] = useState<number>(5);
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       const randomDay = Math.floor(Math.random() * 28) + 1;
       setActiveDay(randomDay);
     }, 2500);
-    
+
     return () => clearInterval(interval);
   }, []);
-  
+
   return (
     <>
       {Array.from({ length: 28 }, (_, i) => {
         const day = i + 1;
         const isActive = activeDay === day;
-        
+
         if (isActive) {
           return (
             <motion.div
               key={day}
-              animate={{ 
+              animate={{
                 backgroundColor: ["#E5293F", "#A82130", "#E5293F"],
                 scale: [1, 1.15, 1]
               }}
@@ -252,7 +252,7 @@ function RandomCalendarDays() {
             </motion.div>
           );
         }
-        
+
         return (
           <div
             key={day}
@@ -282,8 +282,8 @@ export default function Diferenciais() {
             <span className="text-gradient">conquiste mais resultados.</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            A EasyJur é a plataforma de gestão jurídica que integra todas as áreas do seu escritório 
-            em um só lugar, permitindo que você tome decisões baseadas em dados e foque no que 
+            A EasyJur é a plataforma de gestão jurídica que integra todas as áreas do seu escritório
+            em um só lugar, permitindo que você tome decisões baseadas em dados e foque no que
             realmente importa: seus clientes.
           </p>
         </motion.div>
@@ -299,12 +299,12 @@ export default function Diferenciais() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 bg-white rounded-3xl p-8 lg:p-12 border border-gray-100 shadow-sm"
+          className="mt-16 bg-[#F9F9F9] rounded-3xl p-8 lg:p-12 border border-gray-200"
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Recursos Incluídos</h3>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <h3 className="text-2xl font-bold text-[#191919] mb-6">Recursos Incluídos</h3>
+              <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   'Gestão de Processos',
                   'Controle de Prazos',
@@ -312,38 +312,47 @@ export default function Diferenciais() {
                   'Dashboard Analytics',
                   'API Aberta',
                   'Integração OAB',
-                ].map((feature) => (
-                  <div key={feature} className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-full bg-[#E5293F]/20 flex items-center justify-center">
-                      <Check className="w-3 h-3 text-[#E5293F]" />
+                ].map((feature, idx) => (
+                  <motion.div
+                    key={feature}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex items-center gap-3"
+                  >
+                    <div className="w-6 h-6 rounded-full bg-[#E5293F] flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
                     </div>
-                    <span className="text-gray-700">{feature}</span>
-                  </div>
+                    <span className="text-[#191919] font-medium text-sm">{feature}</span>
+                  </motion.div>
                 ))}
               </div>
             </div>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E5293F]/20 to-transparent rounded-3xl" />
-              <div className="relative bg-gray-50 rounded-3xl p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <div className="text-3xl font-bold text-gray-900">85%</div>
-                    <div className="text-gray-500 text-sm">Aumento de produtividade</div>
+                    <div className="text-4xl font-bold text-[#191919]">85%</div>
+                    <div className="text-[#7F919A] text-sm mt-1">Aumento de produtividade</div>
                   </div>
-                  <div className="text-4xl">📈</div>
+                  <div className="w-12 h-12 rounded-xl bg-[#E5293F] flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                  </div>
                 </div>
-                <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: '85%' }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.5 }}
+                    transition={{ duration: 1.2, delay: 0.5 }}
                     className="h-full bg-gradient-to-r from-[#E5293F] to-[#A82130] rounded-full"
                   />
                 </div>
-                <div className="mt-6 flex items-center justify-between text-sm">
-                  <span className="text-gray-500">Tempo economizado</span>
-                  <span className="text-[#E5293F] font-semibold">+20h/semana</span>
+                <div className="mt-6 flex items-center justify-between">
+                  <span className="text-[#7F919A] text-sm">Tempo economizado</span>
+                  <span className="text-[#E5293F] font-bold">+20h/semana</span>
                 </div>
               </div>
             </div>
