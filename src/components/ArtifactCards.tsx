@@ -326,64 +326,52 @@ function ProtocolScheduler() {
         ))}
       </div>
 
-      <motion.button
-        disabled={!isSaved}
-        animate={{ 
-          backgroundColor: isSaved ? BRAND_COLORS.primary : 'rgb(0, 0, 0)',
-          scale: 1
-        }}
-        whileHover={{ scale: isSaved ? 1.02 : 1 }}
-        whileTap={{ scale: isSaved ? 0.98 : 1 }}
-        className={`w-full py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2 ${
-          isSaved ? 'text-white' : 'text-gray-400'
-        }`}
-      >
-        {isSaving ? (
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
-          />
-        ) : (
-          <>
-            <Calendar className="w-4 h-4" />
-            {isSaved ? 'Agendado!' : 'Selecione um dia'}
-            <Check className="w-4 h-4" />
-          </>
-        )}
-      </motion.button>
+      <div className="relative">
+        <motion.button
+          disabled={!isSaved}
+          animate={{ 
+            backgroundColor: isSaved ? BRAND_COLORS.primary : 'rgb(0, 0, 0)',
+            scale: 1
+          }}
+          whileHover={{ scale: isSaved ? 1.02 : 1 }}
+          whileTap={{ scale: isSaved ? 0.98 : 1 }}
+          className={`w-full py-3 px-4 rounded-xl text-sm font-medium flex items-center justify-center gap-2 min-h-[48px] ${
+            isSaved ? 'text-white' : 'text-gray-400'
+          }`}
+        >
+          {isSaving ? (
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+            />
+          ) : isSaved ? (
+            <span className="flex items-center gap-2">
+              <Check className="w-4 h-4" />
+              <span>Próximo: <strong>{days[selectedDay!]}</strong></span>
+            </span>
+          ) : (
+            <>
+              <Calendar className="w-4 h-4" />
+              Selecione um dia
+            </>
+          )}
+        </motion.button>
 
-      <AnimatePresence>
-        {isSaved && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="mt-4 p-3 rounded-lg border overflow-hidden"
-            style={{ 
-              backgroundColor: BRAND_COLORS.primaryFade,
-              borderColor: BRAND_COLORS.primary 
-            }}
-          >
-            <motion.p 
+        <AnimatePresence>
+          {isSaved && (
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="text-xs font-medium flex items-center gap-2"
-              style={{ color: BRAND_COLORS.primaryDark }}
-            >
-              <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: "spring" }}
-              >
-                <Check className="w-3 h-3" />
-              </motion.span>
-              Próximo atendimento: <strong>{days[selectedDay!]}</strong>
-            </motion.p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 rounded-xl pointer-events-none"
+              style={{ 
+                boxShadow: `0 0 0 1px ${BRAND_COLORS.primaryFade}, 0 0 20px ${BRAND_COLORS.primaryFade}`
+              }}
+            />
+          )}
+        </AnimatePresence>
+      </div>
     </motion.div>
   );
 }
