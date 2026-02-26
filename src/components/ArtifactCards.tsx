@@ -271,7 +271,7 @@ function ProtocolScheduler() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Agendamento
+          Minha Agenda
         </motion.h4>
         <motion.div
           animate={{ opacity: isSaving ? 1 : isSaved ? 1 : 0 }}
@@ -352,7 +352,12 @@ function ProtocolScheduler() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+              className={cn(
+                "w-4 h-4 border-2 rounded-full",
+                isSaved 
+                  ? "border-white/30 border-t-white" 
+                  : "border-gray-400/30 border-t-gray-400"
+              )}
             />
           ) : isSaved ? (
             <span className="flex items-center gap-2">
@@ -405,7 +410,7 @@ export default function ArtifactCards() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-6 grid-rows-6 gap-6">
+        <div className="grid grid-cols-6 grid-rows-6 gap-[60px]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
