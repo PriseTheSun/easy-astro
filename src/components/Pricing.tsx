@@ -205,7 +205,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
 
         <button
           className={cn(
-            "w-full py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300",
+            "w-full py-4 rounded-full font-semibold flex items-center justify-center gap-2 transition-all duration-300",
             plan.popular 
               ? 'bg-white text-black hover:bg-gray-100' 
               : 'bg-black text-white hover:bg-gray-900'
@@ -251,10 +251,22 @@ export default function Pricing() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center text-gray-500 mt-12"
+          className="text-center text-gray-500 mt-8"
         >
           * Todos os planos incluem 7 dias de teste grátis. Cancelamento a qualquer momento.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-6"
+        >
+          <button className="text-primary font-medium hover:underline underline-offset-4">
+            Comparar todos os Planos
+          </button>
+        </motion.div>
       </div>
     </section>
   );
