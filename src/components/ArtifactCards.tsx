@@ -1,16 +1,24 @@
 "use client"
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { AnimatedList } from '@/components/ui/animated-list';
 import { Calendar, ChevronRight, Check, Scale, Bell, Wallet, Cloud, FileBarChart, type LucideIcon } from 'lucide-react';
+
+const BRAND_COLORS = {
+  primary: '#E5293F',
+  primaryLight: '#FF4D5E',
+  primaryDark: '#A82130',
+  primaryFade: '#FDEAEC',
+};
 
 interface BenefitItem {
   name: string
   description: string
   icon: LucideIcon
   color: string
+  bgColor: string
   time: string
 }
 
@@ -19,50 +27,55 @@ const benefits: BenefitItem[] = [
     name: "Gestão de Processos e Prazos",
     description: "Controle total sobre os andamentos e tribunais.",
     icon: Scale,
-    color: "#00C9A7",
+    color: BRAND_COLORS.primary,
+    bgColor: '#ffffff',
     time: "✓ Ativo",
   },
   {
     name: "Publicações e Intimações",
     description: "Receba e trate suas notificações automaticamente.",
     icon: Bell,
-    color: "#FFB800",
+    color: BRAND_COLORS.primary,
+    bgColor: '#ffffff',
     time: "✓ Ativo",
   },
   {
     name: "Gestão Financeira Completa",
     description: "Fluxo de caixa, honorários, DRE e emissão de notas.",
     icon: Wallet,
-    color: "#FF3D71",
+    color: BRAND_COLORS.primary,
+    bgColor: '#ffffff',
     time: "✓ Ativo",
   },
   {
     name: "GED (Gestão de Documentos)",
     description: "Armazenamento em nuvem seguro e organizado.",
     icon: Cloud,
-    color: "#1E86FF",
+    color: BRAND_COLORS.primary,
+    bgColor: '#ffffff',
     time: "✓ Ativo",
   },
   {
     name: "Relatórios Customizados",
     description: "Informações precisas para a tomada de decisão.",
     icon: FileBarChart,
-    color: "#8B5CF6",
+    color: BRAND_COLORS.primary,
+    bgColor: '#ffffff',
     time: "✓ Ativo",
   },
 ]
 
 const repeatedBenefits = Array.from({ length: 10 }, () => benefits).flat()
 
-const Notification = ({ name, description, icon: Icon, color, time }: BenefitItem) => {
+const Notification = ({ name, description, icon: Icon, color, bgColor, time }: BenefitItem) => {
   return (
     <figure
       className={cn(
         "relative min-h-fit w-full cursor-pointer overflow-hidden rounded-2xl p-4",
         "transition-all duration-200 ease-in-out hover:scale-[103%]",
-        "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
-        "transform-gpu dark:bg-transparent dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)]"
+        "[box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]"
       )}
+      style={{ backgroundColor: bgColor }}
     >
       <div className="flex flex-row items-center gap-3">
         <div
@@ -74,12 +87,12 @@ const Notification = ({ name, description, icon: Icon, color, time }: BenefitIte
           <Icon className="w-6 h-6 text-white" />
         </div>
         <div className="flex flex-col overflow-hidden">
-          <figcaption className="flex flex-row items-center text-lg font-medium whitespace-pre dark:text-white">
-            <span className="text-sm sm:text-lg">{name}</span>
+          <figcaption className="flex flex-row items-center text-lg font-medium whitespace-pre">
+            <span className="text-sm sm:text-lg text-black">{name}</span>
             <span className="mx-1">·</span>
             <span className="text-xs text-gray-500">{time}</span>
           </figcaption>
-          <p className="text-sm font-normal dark:text-white/60">
+          <p className="text-sm font-normal text-gray-600">
             {description}
           </p>
         </div>
@@ -168,7 +181,7 @@ function TelemetryTypewriter() {
           <span className="text-gray-500 text-xs">Online</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-yellow-500">⚡</span>
+          <span style={{ color: BRAND_COLORS.primary }}>⚡</span>
           <span className="text-gray-500 text-xs">Automações ativas</span>
         </div>
       </div>
@@ -178,42 +191,99 @@ function TelemetryTypewriter() {
 
 function ProtocolScheduler() {
   const days = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-  const [activeDay, setActiveDay] = useState<number | null>(null);
-  const [isSaved, setIsSaved] = useState(false);
+  const [step, setStep] = useState(0);
+  const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [isSaving, setIsSaving] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [visibleDays, setVisibleDays] = useState<number[]>([]);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const handleDayClick = (index: number) => {
-    setActiveDay(index);
+  const runAnimation = useCallback(() => {
+    setVisibleDays([]);
+    setSelectedDay(null);
+    setIsSaving(false);
     setIsSaved(false);
-    setShowSuccess(false);
-  };
+    setStep(0);
 
-  const handleSave = () => {
-    if (activeDay === null) return;
-    setIsSaving(true);
-    setTimeout(() => {
-      setIsSaving(false);
-      setIsSaved(true);
-      setShowSuccess(true);
-    }, 800);
-  };
+    setTimeout(() => setVisibleDays([0, 1, 2]), 100);
+    setTimeout(() => setVisibleDays([0, 1, 2, 3]), 200);
+    setTimeout(() => setVisibleDays([0, 1, 2, 3, 4]), 300);
+    setTimeout(() => setVisibleDays([0, 1, 2, 3, 4, 5]), 400);
+  }, []);
+
+  useEffect(() => {
+    if (!isHovered) {
+      runAnimation();
+      const interval = setInterval(() => {
+        if (!isHovered) {
+          runAnimation();
+        }
+      }, 6000);
+      return () => clearInterval(interval);
+    }
+  }, [isHovered, runAnimation]);
+
+  useEffect(() => {
+    if (visibleDays.length === 6 && !isHovered) {
+      const selectTimer = setTimeout(() => {
+        setSelectedDay(Math.floor(Math.random() * 6));
+        setStep(1);
+      }, 500);
+      return () => clearTimeout(selectTimer);
+    }
+  }, [visibleDays, isHovered]);
+
+  useEffect(() => {
+    if (step === 1 && selectedDay !== null && !isHovered) {
+      const saveTimer = setTimeout(() => {
+        setIsSaving(true);
+        setStep(2);
+      }, 700);
+      return () => clearTimeout(saveTimer);
+    }
+  }, [step, selectedDay, isHovered]);
+
+  useEffect(() => {
+    if (isSaving && !isHovered) {
+      const finishTimer = setTimeout(() => {
+        setIsSaving(false);
+        setIsSaved(true);
+        setStep(3);
+      }, 1500);
+      return () => clearTimeout(finishTimer);
+    }
+  }, [isSaving, isHovered]);
 
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-200 h-full">
+    <motion.div 
+      className="bg-white rounded-2xl p-6 border border-gray-200 h-full"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="flex items-center justify-between mb-6">
-        <h4 className="font-semibold text-black">Agendamento</h4>
+        <motion.h4 
+          className="font-semibold text-black"
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          Agendamento
+        </motion.h4>
         <motion.div
-          animate={{ opacity: isSaving ? 1 : showSuccess ? 1 : 0 }}
+          animate={{ opacity: isSaving ? 1 : isSaved ? 1 : 0 }}
           className="flex items-center gap-2"
         >
           {isSaving ? (
             <span className="text-xs text-gray-500">Salvando...</span>
-          ) : showSuccess ? (
+          ) : isSaved ? (
             <motion.span
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="text-xs text-green-600 font-medium"
+              className="text-xs font-medium"
+              style={{ color: BRAND_COLORS.primary }}
             >
               ✓ Salvo com sucesso
             </motion.span>
@@ -225,19 +295,28 @@ function ProtocolScheduler() {
         {days.map((day, index) => (
           <motion.button
             key={day}
-            onClick={() => handleDayClick(index)}
-            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ 
+              opacity: visibleDays.includes(index) ? 1 : 0,
+              scale: visibleDays.includes(index) ? 1 : 0.5,
+              backgroundColor: selectedDay === index ? BRAND_COLORS.primary : 'rgb(243, 244, 246)',
+              color: selectedDay === index ? 'white' : 'rgb(75, 85, 99)',
+              boxShadow: selectedDay === index ? `0 10px 15px -3px ${BRAND_COLORS.primary}50` : 'none'
+            }}
+            transition={{ 
+              duration: 0.3,
+              type: "spring",
+              stiffness: 400,
+              damping: 25
+            }}
+            whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
-            className={`p-3 rounded-xl text-center transition-all relative overflow-hidden ${
-              activeDay === index
-                ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-            }`}
+            className="p-3 rounded-xl text-center relative overflow-hidden"
           >
-            <div className="text-sm font-medium">{day}</div>
-            {activeDay === index && (
+            <span className="relative z-10 text-sm font-medium">{day}</span>
+            {selectedDay === index && (
               <motion.div
-                layoutId="selectedDay"
+                layoutId="selectedDayBg"
                 className="absolute inset-0 bg-white/20"
                 initial={false}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -248,14 +327,15 @@ function ProtocolScheduler() {
       </div>
 
       <motion.button
-        onClick={handleSave}
-        disabled={activeDay === null || isSaving}
-        whileHover={{ scale: activeDay !== null ? 1.02 : 1 }}
-        whileTap={{ scale: activeDay !== null ? 0.98 : 1 }}
-        className={`w-full py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-all ${
-          activeDay !== null
-            ? 'bg-black text-white shadow-lg shadow-black/20 hover:shadow-xl'
-            : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+        disabled={!isSaved}
+        animate={{ 
+          backgroundColor: isSaved ? BRAND_COLORS.primary : 'rgb(0, 0, 0)',
+          scale: 1
+        }}
+        whileHover={{ scale: isSaved ? 1.02 : 1 }}
+        whileTap={{ scale: isSaved ? 0.98 : 1 }}
+        className={`w-full py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2 ${
+          isSaved ? 'text-white' : 'text-gray-400'
         }`}
       >
         {isSaving ? (
@@ -267,25 +347,44 @@ function ProtocolScheduler() {
         ) : (
           <>
             <Calendar className="w-4 h-4" />
-            {isSaved ? 'Alterar' : 'Salvar'}
-            <ChevronRight className="w-4 h-4" />
+            {isSaved ? 'Agendado!' : 'Selecione um dia'}
+            <Check className="w-4 h-4" />
           </>
         )}
       </motion.button>
 
-      {showSuccess && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200"
-        >
-          <p className="text-xs text-green-700">
-            <Check className="w-3 h-3 inline mr-1" />
-            Agendamento confirmado para {days[activeDay!]}
-          </p>
-        </motion.div>
-      )}
-    </div>
+      <AnimatePresence>
+        {isSaved && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="mt-4 p-3 rounded-lg border overflow-hidden"
+            style={{ 
+              backgroundColor: BRAND_COLORS.primaryFade,
+              borderColor: BRAND_COLORS.primary 
+            }}
+          >
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="text-xs font-medium flex items-center gap-2"
+              style={{ color: BRAND_COLORS.primaryDark }}
+            >
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring" }}
+              >
+                <Check className="w-3 h-3" />
+              </motion.span>
+              Próximo atendimento: <strong>{days[selectedDay!]}</strong>
+            </motion.p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
