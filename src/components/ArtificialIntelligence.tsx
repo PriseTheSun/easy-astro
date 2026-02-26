@@ -68,7 +68,7 @@ export default function ArtificialIntelligence() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="bg-[#0F0F0F] rounded-2xl p-4 border border-gray-800 text-center"
+              className="bg-[#0F0F0F] dark:bg-gray-800 rounded-2xl p-4 border border-gray-800 dark:border-gray-700 text-center"
             >
               <benefit.icon className="w-5 h-5 text-[#E5293F] mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">{benefit.value}</div>
@@ -87,7 +87,7 @@ export default function ArtificialIntelligence() {
               transition={{ duration: 0.4, delay: index * 0.05 }}
               whileHover={{ scale: 1.02 }}
               className={cn(
-                "group bg-[#0F0F0F] rounded-2xl p-5 border border-gray-800 hover:border-[#E5293F]/50 transition-all cursor-pointer relative overflow-hidden",
+                "group bg-[#0F0F0F] dark:bg-gray-800 rounded-2xl p-5 border border-gray-800 dark:border-gray-700 hover:border-[#E5293F]/50 transition-all cursor-pointer relative overflow-hidden",
                 index === 0 && "col-span-2 row-span-3",
                 index === 1 && "row-span-3 col-start-3",
                 index === 2 && "col-span-2 row-span-4 col-start-4",
