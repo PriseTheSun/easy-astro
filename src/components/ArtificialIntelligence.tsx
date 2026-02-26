@@ -18,11 +18,11 @@ function ShimmerButton({ children, className }: { children: React.ReactNode; cla
 }
 
 const aiFeatures = [
-  { icon: FileText, title: 'Petições', description: 'Gere peças processuais completas em segundos com IA' },
+  { icon: FileText, title: 'Petições', description: 'Gere peças processuais completas em segundos com IA. Petições, contestações, recursos e muito mais com linguagem jurídica precisa.' },
   { icon: Brain, title: 'Análise', description: 'Identifique tendências e padrões nos julgamentos' },
-  { icon: Eye, title: 'Resumos', description: 'Compreenda processos inteiros em minutos' },
+  { icon: Eye, title: 'Resumos', description: 'Compreenda processos inteiros em minutos. Resumos automáticos de petições, decisões e sentenças com extração de informações relevantes. IA que entende linguagem jurídica e destaca pontos essenciais para sua estratégia. Identifique argumentos fortes e fracos, prazos importantes e precedentes favoráveis ou desfavoráveis.' },
   { icon: Search, title: 'Pesquisa', description: 'Encontre precedentes relevantes' },
-  { icon: Workflow, title: 'Automação', description: 'Automatize tarefas repetitivas e ganhe tempo' },
+  { icon: Workflow, title: 'Automação', description: 'Automatize tarefas repetitivas e ganhe tempo. Workflows personalizados para cada etapa do seu processo jurídico.' },
   { icon: Scale, title: 'Previsão', description: 'Antecipe decisões com dados históricos' },
 ];
 
