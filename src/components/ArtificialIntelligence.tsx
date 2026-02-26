@@ -68,11 +68,11 @@ export default function ArtificialIntelligence() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="bg-[#0F0F0F] dark:bg-gray-800 rounded-2xl p-4 border border-gray-800 dark:border-gray-700 text-center"
+              className="bg-[#0F0F0F] dark:bg-gray-800 rounded-2xl p-5 border border-gray-800 dark:border-gray-700 text-center"
             >
-              <benefit.icon className="w-5 h-5 text-[#E5293F] mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">{benefit.value}</div>
-              <div className="text-xs text-gray-500">{benefit.label}</div>
+              <benefit.icon className="w-6 h-6 text-[#E5293F] mx-auto mb-2" />
+              <div className="text-3xl font-bold text-white">{benefit.value}</div>
+              <div className="text-sm text-gray-500">{benefit.label}</div>
             </motion.div>
           ))}
         </div>
@@ -99,8 +99,8 @@ export default function ArtificialIntelligence() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#E5293F]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               
               <div className="relative z-10 h-full flex flex-col">
-                <div className="w-10 h-10 rounded-lg bg-[#E5293F]/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                  <feature.icon className="w-5 h-5 text-[#E5293F]" />
+                <div className="w-12 h-12 rounded-lg bg-[#E5293F]/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-6 h-6 text-[#E5293F]" />
                 </div>
 
                 <h3 className="text-base font-semibold text-white mb-1">{feature.title}</h3>
