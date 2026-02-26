@@ -1,18 +1,25 @@
 import { motion } from 'framer-motion';
 
+import impB3 from '../assets/images/Impulsionados/b3-a-bolsa-do-brasil.png';
+import impBossanova from '../assets/images/Impulsionados/bossanova.png';
+import impTransunion from '../assets/images/Impulsionados/transunion-brasil.png';
+import impSafra from '../assets/images/Impulsionados/banco-safra.png';
+import impGoogle from '../assets/images/Impulsionados/google-cloud-for-startups.png';
+import impAws from '../assets/images/Impulsionados/amazon-webservices.png';
+import impRtm from '../assets/images/Impulsionados/rtm-br.png';
+import impAb2l from '../assets/images/Impulsionados/ab2l-associacao-brasileira-de-lawtechs-e-legaltechs.png';
+import impAbracrim from '../assets/images/Impulsionados/abracrim-associacao-brasileira-dos-advogados-criminalistas.png';
+
 const companies = [
-  'Advocacia Silva',
-  'Martins & Associados',
-  'Costa Advogados',
-  'Pereira Legal',
-  'Oliveira Sociedade',
-  'Santos Advocacia',
-  'Lima & Partners',
-  'Cardoso Gestão',
-  'Nunes Consultoria',
-  'Rodrigues Jurídico',
-  'Almeida & Coelho',
-  'Ferreira Advogados',
+  { name: 'B3', img: impB3 },
+  { name: 'Bossanova', img: impBossanova },
+  { name: 'Transunion', img: impTransunion },
+  { name: 'Safra', img: impSafra },
+  { name: 'Google Cloud', img: impGoogle },
+  { name: 'AWS', img: impAws },
+  { name: 'RTM', img: impRtm },
+  { name: 'AB2L', img: impAb2l },
+  { name: 'Abracrim', img: impAbracrim },
 ];
 
 function CompanyMarquee() {
@@ -32,9 +39,11 @@ function CompanyMarquee() {
             key={index}
             className="flex items-center px-4"
           >
-            <span className="text-xl font-semibold text-gray-500">
-              {company}
-            </span>
+            <img 
+              src={company.img.src} 
+              alt={company.name} 
+              className="h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+            />
           </div>
         ))}
       </motion.div>
@@ -54,7 +63,7 @@ export default function SocialProof() {
           className="text-center mb-8"
         >
           <p className="text-sm font-medium text-gray-500 uppercase tracking-widest">
-            Empresas que confiam na EasyJur
+            Parceiros e Investidores
           </p>
         </motion.div>
 
