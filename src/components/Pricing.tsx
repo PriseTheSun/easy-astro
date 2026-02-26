@@ -111,13 +111,13 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
       className={cn(
         "relative rounded-3xl overflow-hidden transition-all duration-300",
         plan.popular 
-          ? 'bg-black border-2 border-black shadow-2xl shadow-primary/20' 
+          ? 'bg-black dark:bg-[#E5293F] border-2 border-black dark:border-[#E5293F] shadow-2xl shadow-primary/20' 
           : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl'
       )}
     >
       {plan.popular && (
         <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10">
-          <div className="bg-black text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">
+          <div className="bg-white dark:bg-white text-black dark:text-[#E5293F] px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">
             MAIS CONTRATADO
           </div>
         </div>
@@ -131,7 +131,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           )}>
             {plan.name}
           </h3>
-          <p className={plan.popular ? 'text-gray-400' : 'text-gray-600 dark:text-gray-400'}>
+          <p className={plan.popular ? 'text-gray-200 dark:text-gray-100' : 'text-gray-600 dark:text-gray-400'}>
             {plan.description}
           </p>
         </div>
@@ -140,13 +140,13 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           <div className="flex items-baseline gap-1">
             <span className={cn(
               "text-5xl font-bold",
-              plan.popular ? 'text-white' : 'text-black'
+              plan.popular ? 'text-white' : 'text-black dark:text-white'
             )}>
               {plan.price}
             </span>
-            <span className={plan.popular ? 'text-gray-400' : 'text-gray-600'}>{plan.period}</span>
+            <span className={plan.popular ? 'text-gray-200 dark:text-gray-100' : 'text-gray-600 dark:text-gray-300'}>{plan.period}</span>
           </div>
-          <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 text-green-500 text-sm font-medium group relative cursor-help">
+          <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 dark:bg-green-500/20 text-green-500 dark:text-green-400 text-sm font-medium group relative cursor-help">
             <span>Ganhe até {plan.cashback} cashback</span>
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap">
               Válido para pagamentos no cartão
@@ -160,14 +160,14 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
             <div key={i} className="flex items-start gap-3">
               <div className={cn(
                 "w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5",
-                plan.popular ? 'bg-primary' : 'bg-primary/10'
+                plan.popular ? 'bg-white' : 'bg-primary/10 dark:bg-white/20'
               )}>
                 <Check className={cn(
                   "w-3 h-3",
-                  plan.popular ? 'text-white' : 'text-primary'
+                  plan.popular ? 'text-[#E5293F]' : 'text-primary dark:text-white'
                 )} />
               </div>
-              <span className={plan.popular ? 'text-gray-300 text-sm' : 'text-gray-700 text-sm'}>
+              <span className={plan.popular ? 'text-white text-sm' : 'text-gray-700 dark:text-white/80 text-sm'}>
                 {feature}
               </span>
             </div>
@@ -187,14 +187,14 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
                 <div key={i} className="flex items-start gap-3">
                   <div className={cn(
                     "w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5",
-                    plan.popular ? 'bg-white/20' : 'bg-primary/10'
+                    plan.popular ? 'bg-white/20' : 'bg-primary/10 dark:bg-white/20'
                   )}>
                     <Check className={cn(
                       "w-3 h-3",
-                      plan.popular ? 'text-white' : 'text-primary'
+                      plan.popular ? 'text-white' : 'text-primary dark:text-white'
                     )} />
                   </div>
-                  <span className={plan.popular ? 'text-gray-400 text-sm' : 'text-gray-600 dark:text-gray-400 text-sm'}>
+                  <span className={plan.popular ? 'text-white/80 text-sm' : 'text-gray-600 dark:text-white/70 text-sm'}>
                     {extra}
                   </span>
                 </div>
@@ -207,7 +207,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           className={cn(
             "w-full py-4 rounded-full font-semibold flex items-center justify-center gap-2 transition-all duration-300",
             plan.popular 
-              ? 'bg-white text-black hover:bg-gray-100' 
+              ? 'bg-white text-[#E5293F] hover:bg-gray-100' 
               : 'bg-black dark:bg-white text-white dark:text-black hover:bg-gray-900 dark:hover:bg-gray-200'
           )}
         >
