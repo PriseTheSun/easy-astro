@@ -9,6 +9,21 @@ import selosB2bAwardsGestao from '../assets/images/selos/b2b-awards-gestao-escri
 import selosB2bAwardsPequeno from '../assets/images/selos/b2b-awards-escritorio-pequeno-porte.png';
 import selosAb2l from '../assets/images/selos/logo-ab2l-2023.svg';
 
+import profile1 from '../assets/images/profiles/Screenshot_1.png';
+import profile2 from '../assets/images/profiles/Screenshot_2.png';
+import profile3 from '../assets/images/profiles/Screenshot_3.png';
+import profile4 from '../assets/images/profiles/Screenshot_4.png';
+import profile5 from '../assets/images/profiles/Screenshot_5.png';
+import profile6 from '../assets/images/profiles/Screenshot_6.png';
+
+import profile7 from '../assets/images/profiles/Screenshot_7.png';
+
+import profile8 from '../assets/images/profiles/Screenshot_8.png';
+
+import profile10 from '../assets/images/profiles/Screenshot_10.png';
+
+const profiles = [profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile10];
+
 const testimonials = [
   {
     name: "Dr. Carlos Silva",
@@ -17,6 +32,7 @@ const testimonials = [
     company: "Silva & Associados",
     rating: 5,
     body: 'A EasyJur transformou a forma como gerencio meu escritório. A automação de tarefas me economiza mais de 20 horas por semana.',
+    img: profiles[0],
   },
   {
     name: "Dra. Maria Santos",
@@ -25,6 +41,7 @@ const testimonials = [
     company: "Santos Advocacia",
     rating: 5,
     body: 'O melhor investimento que fizemos. A IA para análise de processos é incrível. Recomendo para todos os colegas.',
+    img: profile10,
   },
   {
     name: "Dr. Pedro Oliveira",
@@ -33,6 +50,7 @@ const testimonials = [
     company: "Grupo Tech",
     rating: 5,
     body: 'Sistema completo e intuitivo. O suporte é excelente e sempre ágil nas respostas.',
+    img: profile7,
   },
   {
     name: "Dra. Ana Costa",
@@ -41,6 +59,7 @@ const testimonials = [
     company: "Costa Advocacia",
     rating: 5,
     body: 'Minha produtividade aumentou 85% em apenas 3 meses. Interface linda e funcional.',
+    img: profiles[3],
   },
   {
     name: "Dr. Roberto Lima",
@@ -49,6 +68,7 @@ const testimonials = [
     company: "Lima & Lima",
     rating: 5,
     body: 'Controle total dos prazos e processos. Nunca mais perdi uma data importante.',
+    img: profile8,
   },
   {
     name: "Dra. Juliana Alves",
@@ -57,6 +77,7 @@ const testimonials = [
     company: "Alves & Partners",
     rating: 5,
     body: 'A melhor ferramenta para gestão de escritórios jurídicos. O módulo financeiro é espetacular!',
+    img: profiles[5],
   },
 ];
 
@@ -92,12 +113,14 @@ function ReviewCard({
   role,
   rating,
   body,
+  img,
 }: {
   name: string;
   username: string;
   role: string;
   rating: number;
   body: string;
+  img?: { src: string };
 }) {
   return (
     <figure
@@ -108,9 +131,17 @@ function ReviewCard({
       )}
     >
       <div className="flex flex-row items-center gap-2 mb-3">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center text-white font-bold">
-          {name.charAt(0)}
-        </div>
+        {img ? (
+          <img
+            src={img.src}
+            alt={name}
+            className="w-10 h-10 rounded-full object-cover"
+          />
+        ) : (
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center text-white font-bold">
+            {name.charAt(0)}
+          </div>
+        )}
         <div className="flex flex-col">
           <figcaption className="text-sm font-medium text-gray-900 dark:text-white">
             {name}
@@ -157,6 +188,7 @@ export default function TestimonialsFAQ() {
                 role={testimonial.role}
                 rating={testimonial.rating}
                 body={testimonial.body}
+                img={testimonial.img}
               />
             ))}
           </Marquee>
@@ -169,6 +201,7 @@ export default function TestimonialsFAQ() {
                 role={testimonial.role}
                 rating={testimonial.rating}
                 body={testimonial.body}
+                img={testimonial.img}
               />
             ))}
           </Marquee>

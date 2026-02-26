@@ -3,6 +3,12 @@ import { ArrowRight, Play } from 'lucide-react';
 import { cn } from '../lib/utils';
 import DashboardMockup from './DashboardMockup';
 
+import profile1 from '../assets/images/profiles/Screenshot_1.png';
+import profile2 from '../assets/images/profiles/Screenshot_2.png';
+import profile3 from '../assets/images/profiles/Screenshot_3.png';
+import profile4 from '../assets/images/profiles/Screenshot_4.png';
+import profile5 from '../assets/images/profiles/Screenshot_5.png';
+
 interface HeroProps {
   onCTAClick?: () => void;
 }
@@ -59,13 +65,13 @@ export default function Hero({ onCTAClick }: HeroProps) {
 
             <div className="flex items-center gap-8 pt-2">
               <div className="flex -space-x-3">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900 bg-gray-300 dark:bg-gray-700 flex items-center justify-center text-xs font-medium"
-                  >
-                    {String.fromCharCode(64 + i)}
-                  </div>
+                {[profile1, profile2, profile3, profile4, profile5].map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img.src}
+                    alt={`Profile ${idx + 1}`}
+                    className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900 object-cover"
+                  />
                 ))}
               </div>
               <div>
