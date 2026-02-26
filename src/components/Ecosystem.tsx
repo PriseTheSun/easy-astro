@@ -102,8 +102,8 @@ export default function Ecosystem() {
                 fill="none"
                 stroke="url(#orbitGradient)"
                 strokeWidth="2"
-                strokeDasharray="4 8"
-                opacity="0.3"
+                strokeDasharray="8 12"
+                opacity="0.6"
               />
               <defs>
                 <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -156,32 +156,6 @@ export default function Ecosystem() {
             </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12"
-        >
-          {[
-            { label: 'Integrações', color: '#E5293F' },
-            { label: 'Tribunais', color: '#A82130' },
-            { label: 'APIs', color: '#7F919A' },
-            { label: 'Updates/Mês', color: '#191919' },
-          ].map((stat, idx) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="bg-[#F9F9F9] rounded-2xl p-6 text-center border border-gray-200"
-            >
-              <div className="text-xl font-semibold" style={{ color: stat.color }}>{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
