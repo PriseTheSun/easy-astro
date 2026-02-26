@@ -25,8 +25,8 @@ function ShimmerButton({ children, className, onClick }: { children: React.React
 
 export default function Hero({ onCTAClick }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white dark:bg-black">
-      <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 via-transparent to-gray-50/30 dark:from-red-950/20 dark:via-transparent dark:to-gray-900/30" />
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-white to-[#F9F9F9]">
+      <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 via-transparent to-gray-50/30" />
       
       <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-3xl" />

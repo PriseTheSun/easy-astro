@@ -40,7 +40,7 @@ const aiFeatures = [
 
 export default function ArtificialIntelligence() {
   return (
-    <section className="py-24 bg-black relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-white to-[#F9F9F9] relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-3xl" />
@@ -54,17 +54,17 @@ export default function ArtificialIntelligence() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">JurisAI</span>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             Sua produtividade é elevada ao máximo com{' '}
             <span className="text-gradient">inteligência artificial.</span>
           </h2>
           
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Utilize o poder da IA para automatizar tarefas repetitivas e tomar decisões mais rápidas e precisas.
           </p>
         </motion.div>
@@ -78,7 +78,7 @@ export default function ArtificialIntelligence() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="group relative bg-gray-900 rounded-3xl p-8 border border-gray-800 hover:border-primary/50 transition-all overflow-hidden"
+              className="group relative bg-white rounded-3xl p-8 border border-gray-100 hover:border-primary/50 transition-all overflow-hidden shadow-sm"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity`} />
               

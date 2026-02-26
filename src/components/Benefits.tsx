@@ -41,7 +41,7 @@ export default function Benefits() {
   }, []);
 
   return (
-    <section className="py-24 bg-black">
+    <section className="py-24 bg-gradient-to-b from-[#F9F9F9] to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -50,11 +50,11 @@ export default function Benefits() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             Tudo o que seu escritório de advocacia precisa.{' '}
             <span className="text-gradient">Tudo em um clique.</span>
           </h2>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             A um clique de distância, você tem acesso a todas as ferramentas necessárias para 
             uma gestão jurídica eficiente e moderna.
           </p>
@@ -76,20 +76,20 @@ export default function Benefits() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`flex items-start gap-4 p-6 rounded-2xl transition-all ${
-                  index === activeIndex ? 'bg-gray-900 border border-primary/30' : 'bg-transparent border border-transparent'
+                  index === activeIndex ? 'bg-white border border-primary/30 shadow-md' : 'bg-gray-50 border border-gray-100'
                 }`}
               >
                 <motion.div
                   animate={{ scale: index === activeIndex ? 1.1 : 1 }}
                   className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    index === activeIndex ? 'bg-primary' : 'bg-gray-800'
+                    index === activeIndex ? 'bg-primary' : 'bg-gray-200'
                   }`}
                 >
                   <benefit.icon className="w-6 h-6 text-white" />
                 </motion.div>
                 <div className="flex-1">
                   <h3 className={`text-lg font-semibold mb-1 ${
-                    index === activeIndex ? 'text-white' : 'text-gray-400'
+                    index === activeIndex ? 'text-gray-900' : 'text-gray-700'
                   }`}>
                     {benefit.title}
                   </h3>
@@ -114,12 +114,12 @@ export default function Benefits() {
             className="relative"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-3xl" />
-            <div className="relative bg-gray-900 rounded-3xl p-8 border border-gray-800">
+            <div className="relative bg-white rounded-3xl p-8 border border-gray-200 shadow-lg">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-3 h-3 rounded-full bg-red-500" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <div className="w-3 h-3 rounded-full bg-green-500" />
-                <span className="ml-4 text-gray-400 text-sm">EasyJur Dashboard</span>
+                <div className="w-3 h-3 rounded-full bg-red-400" />
+                <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                <div className="w-3 h-3 rounded-full bg-green-400" />
+                <span className="ml-4 text-gray-500 text-sm">EasyJur Dashboard</span>
               </div>
 
               <AnimatePresence mode="wait">
@@ -131,7 +131,7 @@ export default function Benefits() {
                   transition={{ duration: 0.3 }}
                   className="space-y-4"
                 >
-                  <div className="flex items-center gap-4 p-4 bg-gray-800 rounded-xl">
+                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${
                       activeIndex === 0 ? 'from-blue-500 to-cyan-500' :
                       activeIndex === 1 ? 'from-green-500 to-emerald-500' :
