@@ -73,10 +73,10 @@ const Notification = ({ name, description, icon: Icon, color, bgColor, time }: B
       className={cn(
         "relative min-h-fit w-full cursor-pointer overflow-hidden rounded-2xl p-4",
         "transition-all duration-200 ease-in-out hover:scale-[103%]",
+        "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700",
         "dark:[box-shadow:0_0_0_1px_rgba(255,255,255,.05),0_2px_4px_rgba(0,0,0,.3),0_12px_24px_rgba(0,0,0,.3)]",
         "[box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]"
       )}
-      style={{ backgroundColor: bgColor }}
     >
       <div className="flex flex-row items-center gap-3">
         <div
@@ -357,7 +357,7 @@ function ProtocolScheduler() {
           ) : isSaved ? (
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4" />
-              <span>Próximo: <strong>{days[selectedDay!]}</strong></span>
+              <span>Novo Compromisso agendado para: <strong>{days[selectedDay!]}</strong></span>
             </span>
           ) : (
             <>
@@ -405,7 +405,7 @@ export default function ArtifactCards() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-6 grid-rows-6 gap-4">
+        <div className="grid grid-cols-6 grid-rows-6 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -435,7 +435,6 @@ export default function ArtifactCards() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="col-span-3 row-span-3 col-start-4 row-start-4"
           >
-            <h3 className="text-lg font-semibold text-black dark:text-white mb-4 text-start">Agendamento</h3>
             <ProtocolScheduler />
           </motion.div>
         </div>
