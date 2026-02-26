@@ -125,10 +125,10 @@ function ContractChart() {
       {data.map((item) => (
         <div key={item.label} className="group relative">
           <div className="flex justify-between text-sm mb-1">
-            <span className="text-gray-600">{item.label}</span>
-            <span className="font-semibold text-gray-900">{item.value}%</span>
+            <span className="text-gray-600 dark:text-gray-400">{item.label}</span>
+            <span className="font-semibold text-gray-900 dark:text-white">{item.value}%</span>
           </div>
-          <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+          <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: `${item.value}%` }}
@@ -191,10 +191,10 @@ function ProcessDonut() {
                 if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                   return (
                     <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
-                      <tspan x={viewBox.cx} y={viewBox.cy} className="fill-gray-900 text-2xl font-bold">
+                      <tspan x={viewBox.cx} y={viewBox.cy} className="fill-gray-900 dark:fill-white text-2xl font-bold">
                         {totalProcessos.toLocaleString()}
                       </tspan>
-                      <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 22} className="fill-gray-500 text-xs">
+                      <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 22} className="fill-gray-500 dark:fill-gray-400 text-xs">
                         processos
                       </tspan>
                     </text>
@@ -208,12 +208,12 @@ function ProcessDonut() {
       </ResponsiveContainer>
       <div className="space-y-2 mt-2">
         {processData.map((item) => (
-          <div key={item.area} className="group relative flex items-center justify-between p-1.5 rounded-lg hover:bg-gray-50 transition-colors cursor-default">
+          <div key={item.area} className="group relative flex items-center justify-between p-1.5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-default">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.fill }} />
-              <span className="text-sm text-gray-600">{item.area}</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">{item.area}</span>
             </div>
-            <span className="text-sm font-semibold text-gray-900">{item.processos}</span>
+            <span className="text-sm font-semibold text-gray-900 dark:text-white">{item.processos}</span>
           </div>
         ))}
       </div>
