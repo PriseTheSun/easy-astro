@@ -202,7 +202,7 @@ const features = [
       >
         <motion.div 
           whileHover={{ scale: 1.02 }}
-          className="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-gray-100 shadow-sm"
+          className="bg-white/85 backdrop-blur-sm rounded-xl p-3 border border-gray-100 shadow-sm scale-65 origin-top-right"
         >
           <div className="text-center mb-2">
             <span className="text-xs font-semibold text-gray-700">Fevereiro 2026</span>
@@ -220,15 +220,12 @@ const features = [
 ];
 
 function RandomCalendarDays() {
-  const [activeDays, setActiveDays] = useState<number[]>([5, 12]);
+  const [activeDay, setActiveDay] = useState<number>(5);
   
   useEffect(() => {
     const interval = setInterval(() => {
       const randomDay = Math.floor(Math.random() * 28) + 1;
-      setActiveDays(prev => {
-        const filtered = prev.filter(d => d !== randomDay);
-        return [...filtered, randomDay].slice(-2);
-      });
+      setActiveDay(randomDay);
     }, 2500);
     
     return () => clearInterval(interval);
@@ -238,22 +235,31 @@ function RandomCalendarDays() {
     <>
       {Array.from({ length: 28 }, (_, i) => {
         const day = i + 1;
-        const isActive = activeDays.includes(day);
+        const isActive = activeDay === day;
+        
+        if (isActive) {
+          return (
+            <motion.div
+              key={day}
+              animate={{ 
+                backgroundColor: ["#E5293F", "#A82130", "#E5293F"],
+                scale: [1, 1.15, 1]
+              }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-6 h-6 text-[10px] flex items-center justify-center rounded-full text-white font-bold"
+            >
+              {day}
+            </motion.div>
+          );
+        }
+        
         return (
-          <motion.div
+          <div
             key={day}
-            animate={isActive ? { 
-              backgroundColor: ["#E5293F", "#A82130", "#E5293F"],
-              scale: [1, 1.15, 1]
-            } : {}}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className={cn(
-              "w-6 h-6 text-[10px] flex items-center justify-center rounded-full cursor-pointer",
-              isActive ? "text-white font-bold" : "text-gray-600 hover:bg-gray-200/50"
-            )}
+            className="w-6 h-6 text-[10px] flex items-center justify-center rounded-full text-gray-500 cursor-pointer hover:bg-gray-200/30"
           >
             {day}
-          </motion.div>
+          </div>
         );
       })}
     </>
