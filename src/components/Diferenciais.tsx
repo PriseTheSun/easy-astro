@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FileTextIcon, BellIcon, Share2Icon, CalendarIcon, Check } from 'lucide-react';
+import { FileTextIcon, BellIcon, Share2Icon, CalendarIcon, Check, Scale, Building2, Landmark, Users, FileText, Gavel } from 'lucide-react';
 import { BentoCard, BentoGrid } from './BentoGrid';
 import { cn } from '../lib/utils';
 
@@ -131,14 +131,14 @@ const features = [
     background: (
       <div className="absolute top-10 right-4 w-full max-w-md">
         <motion.div 
-          className="flex items-center justify-center gap-8"
+          className="flex items-center justify-center gap-6"
         >
           {[
-            { name: "PJe", color: "bg-blue-500" },
-            { name: "OAB", color: "bg-[#E5293F]" },
-            { name: "TJ", color: "bg-gray-800" },
-            { name: "TRT", color: "bg-green-600" },
-            { name: "PDF", color: "bg-red-500" },
+            { name: "PJe", icon: Scale, color: "#2563EB" },
+            { name: "OAB", icon: Building2, color: "#E5293F" },
+            { name: "TJ", icon: Landmark, color: "#1F2937" },
+            { name: "TRT", icon: Users, color: "#16A34A" },
+            { name: "PDF", icon: FileText, color: "#DC2626" },
           ].map((tool, idx) => (
             <motion.div
               key={idx}
@@ -165,11 +165,12 @@ const features = [
                   ]
                 }}
                 transition={{ duration: 2, repeat: Infinity, delay: idx * 0.3 }}
-                className={cn("w-12 h-12 rounded-xl flex items-center justify-center", tool.color)}
+                className="w-12 h-12 rounded-xl flex items-center justify-center bg-white border-2 shadow-md"
+                style={{ borderColor: tool.color }}
               >
-                <span className="text-white text-xs font-bold">{tool.name.substring(0, 2)}</span>
+                <tool.icon className="w-6 h-6" style={{ color: tool.color }} />
               </motion.div>
-              <span className="text-xs text-gray-600">{tool.name}</span>
+              <span className="text-xs font-medium text-gray-700">{tool.name}</span>
             </motion.div>
           ))}
         </motion.div>
