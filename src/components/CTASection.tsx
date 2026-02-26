@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { cn } from '../lib/utils';
+import priscilaImage from '../assets/images/Priscila.avif';
 
 function ShimmerButton({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
@@ -40,14 +41,12 @@ export default function CTASection() {
           >
             <div className="relative aspect-square max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-purple-500/30 rounded-3xl transform rotate-3" />
-              <div className="relative bg-gray-800 rounded-3xl overflow-hidden h-full flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center">
-                    <span className="text-5xl">👩‍💼</span>
-                  </div>
-                  <h3 className="text-white text-xl font-semibold mb-2">Especialista EasyJur</h3>
-                  <p className="text-gray-400">Pronto para transformar sua gestão jurídica</p>
-                </div>
+              <div className="relative bg-gray-800 rounded-3xl overflow-hidden h-full">
+                <img 
+                  src={priscilaImage.src} 
+                  alt="Priscila - Especialista EasyJur" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               <motion.div
