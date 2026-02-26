@@ -73,6 +73,7 @@ const Notification = ({ name, description, icon: Icon, color, bgColor, time }: B
       className={cn(
         "relative min-h-fit w-full cursor-pointer overflow-hidden rounded-2xl p-4",
         "transition-all duration-200 ease-in-out hover:scale-[103%]",
+        "dark:[box-shadow:0_0_0_1px_rgba(255,255,255,.05),0_2px_4px_rgba(0,0,0,.3),0_12px_24px_rgba(0,0,0,.3)]",
         "[box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]"
       )}
       style={{ backgroundColor: bgColor }}
@@ -88,11 +89,11 @@ const Notification = ({ name, description, icon: Icon, color, bgColor, time }: B
         </div>
         <div className="flex flex-col overflow-hidden">
           <figcaption className="flex flex-row items-center text-lg font-medium whitespace-pre">
-            <span className="text-sm sm:text-lg text-black">{name}</span>
+            <span className="text-sm sm:text-lg text-black dark:text-white">{name}</span>
             <span className="mx-1">·</span>
-            <span className="text-xs text-gray-500">{time}</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">{time}</span>
           </figcaption>
-          <p className="text-sm font-normal text-gray-600">
+          <p className="text-sm font-normal text-gray-600 dark:text-gray-300">
             {description}
           </p>
         </div>
@@ -299,8 +300,8 @@ function ProtocolScheduler() {
             animate={{ 
               opacity: visibleDays.includes(index) ? 1 : 0,
               scale: visibleDays.includes(index) ? 1 : 0.5,
-              backgroundColor: selectedDay === index ? BRAND_COLORS.primary : 'rgb(243, 244, 246)',
-              color: selectedDay === index ? 'white' : 'rgb(75, 85, 99)',
+              backgroundColor: selectedDay === index ? BRAND_COLORS.primary : '',
+              color: selectedDay === index ? 'white' : '',
               boxShadow: selectedDay === index ? `0 10px 15px -3px ${BRAND_COLORS.primary}50` : 'none'
             }}
             transition={{ 
@@ -311,7 +312,12 @@ function ProtocolScheduler() {
             }}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
-            className="p-3 rounded-xl text-center relative overflow-hidden"
+            className={cn(
+              "p-3 rounded-xl text-center relative overflow-hidden",
+              selectedDay === index 
+                ? 'text-white' 
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
+            )}
           >
             <span className="relative z-10 text-sm font-medium">{day}</span>
             {selectedDay === index && (
@@ -330,14 +336,17 @@ function ProtocolScheduler() {
         <motion.button
           disabled={!isSaved}
           animate={{ 
-            backgroundColor: isSaved ? BRAND_COLORS.primary : 'rgb(0, 0, 0)',
+            backgroundColor: isSaved ? BRAND_COLORS.primary : '',
             scale: 1
           }}
           whileHover={{ scale: isSaved ? 1.02 : 1 }}
           whileTap={{ scale: isSaved ? 0.98 : 1 }}
-          className={`w-full py-3 px-4 rounded-xl text-sm font-medium flex items-center justify-center gap-2 min-h-[48px] ${
-            isSaved ? 'text-white' : 'text-gray-400'
-          }`}
+          className={cn(
+            "w-full py-3 px-4 rounded-xl text-sm font-medium flex items-center justify-center gap-2 min-h-[48px]",
+            isSaved 
+              ? 'text-white' 
+              : 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500'
+          )}
         >
           {isSaving ? (
             <motion.div
@@ -378,7 +387,7 @@ function ProtocolScheduler() {
 
 export default function ArtifactCards() {
   return (
-    <section className="py-24 bg-gray-50 dark:bg-gray-900">
+    <section className="py-24 bg-gray-50 dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -404,7 +413,7 @@ export default function ArtifactCards() {
             transition={{ duration: 0.5 }}
             className="col-span-3 row-span-6"
           >
-            <h3 className="text-lg font-semibold text-black mb-4 text-start">Benefícios</h3>
+            <h3 className="text-lg font-semibold text-black dark:text-white mb-4 text-start">Benefícios</h3>
             <AnimatedBenefitsList />
           </motion.div>
 
@@ -415,7 +424,7 @@ export default function ArtifactCards() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="col-span-3 row-span-3 col-start-4"
           >
-            <h3 className="text-lg font-semibold text-black mb-4 text-start">Automações trabalhando por você</h3>
+            <h3 className="text-lg font-semibold text-black dark:text-white mb-4 text-start">Automações trabalhando por você</h3>
             <TelemetryTypewriter />
           </motion.div>
 
@@ -426,7 +435,7 @@ export default function ArtifactCards() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="col-span-3 row-span-3 col-start-4 row-start-4"
           >
-            <h3 className="text-lg font-semibold text-black mb-4 text-start">Agendamento</h3>
+            <h3 className="text-lg font-semibold text-black dark:text-white mb-4 text-start">Agendamento</h3>
             <ProtocolScheduler />
           </motion.div>
         </div>
