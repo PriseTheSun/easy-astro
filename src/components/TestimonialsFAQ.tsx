@@ -1,47 +1,57 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ChevronDown, ChevronUp, Quote } from 'lucide-react';
+import { Star, ChevronDown, ChevronUp } from 'lucide-react';
+import Marquee from './ui/marquee';
+import { cn } from '../lib/utils';
 
 const testimonials = [
   {
-    name: 'Dr. Carlos Silva',
-    role: 'Advogado Titular',
-    company: 'Silva & Associados',
-    avatar: '👨‍⚖️',
+    name: "Dr. Carlos Silva",
+    username: "@carlos_silva",
+    role: "Advogado Titular",
+    company: "Silva & Associados",
     rating: 5,
-    text: 'A EasyJur transformou a forma como gerencio meu escritório. A automação de tarefas me economiza mais de 20 horas por semana.',
+    body: 'A EasyJur transformou a forma como gerencio meu escritório. A automação de tarefas me economiza mais de 20 horas por semana.',
   },
   {
-    name: 'Dra. Maria Santos',
-    role: 'Sócia',
-    company: 'Santos Advocacia',
-    avatar: '👩‍⚖️',
+    name: "Dra. Maria Santos",
+    username: "@maria_santos",
+    role: "Sócia",
+    company: "Santos Advocacia",
     rating: 5,
-    text: 'O melhor investimento que fizemos. A IA para análise de processos é incrível. Recomendo para todos os colegas.',
+    body: 'O melhor investimento que fizemos. A IA para análise de processos é incrível. Recomendo para todos os colegas.',
   },
   {
-    name: 'Dr. Pedro Oliveira',
-    role: 'Diretor Jurídico',
-    company: 'Grupo Tech',
-    avatar: '👨‍💼',
+    name: "Dr. Pedro Oliveira",
+    username: "@pedro_oliveira",
+    role: "Diretor Jurídico",
+    company: "Grupo Tech",
     rating: 5,
-    text: 'Sistema completo e intuitivo. O suporte é excelente e sempre ágil nas respostas.',
+    body: 'Sistema completo e intuitivo. O suporte é excelente e sempre ágil nas respostas.',
   },
   {
-    name: 'Dra. Ana Costa',
-    role: 'Advogada',
-    company: 'Costa Advocacia',
-    avatar: '👩‍💼',
+    name: "Dra. Ana Costa",
+    username: "@ana_costa",
+    role: "Advogada",
+    company: "Costa Advocacia",
     rating: 5,
-    text: 'Minha produtividade aumentou 85% em apenas 3 meses. Interface linda e funcional.',
+    body: 'Minha produtividade aumentou 85% em apenas 3 meses. Interface linda e funcional.',
   },
   {
-    name: 'Dr. Roberto Lima',
-    role: 'Gestor',
-    company: 'Lima & Lima',
-    avatar: '👨‍⚖️',
+    name: "Dr. Roberto Lima",
+    username: "@roberto_lima",
+    role: "Gestor",
+    company: "Lima & Lima",
     rating: 5,
-    text: 'Controle total dos prazos e processos. Nunca mais perdi uma data importante.',
+    body: 'Controle total dos prazos e processos. Nunca mais perdi uma data importante.',
+  },
+  {
+    name: "Dra. Juliana Alves",
+    username: "@juliana_alves",
+    role: "Sócia Fundadora",
+    company: "Alves & Partners",
+    rating: 5,
+    body: 'A melhor ferramenta para gestão de escritórios jurídicos. O módulo financeiro é espetacular!',
   },
 ];
 
@@ -68,15 +78,48 @@ const faqs = [
   },
 ];
 
-function MarqueeItem({ children, className }: { children: React.ReactNode; className?: string }) {
+const firstRow = testimonials.slice(0, testimonials.length / 2);
+const secondRow = testimonials.slice(testimonials.length / 2);
+
+function ReviewCard({
+  name,
+  username,
+  role,
+  rating,
+  body,
+}: {
+  name: string;
+  username: string;
+  role: string;
+  rating: number;
+  body: string;
+}) {
   return (
-    <motion.div
-      animate={{ x: ['0%', '-100%'] }}
-      transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-      className={className}
+    <figure
+      className={cn(
+        "relative h-full w-80 cursor-pointer overflow-hidden rounded-xl border p-4",
+        "border-gray-200 bg-white shadow-sm hover:shadow-md",
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+      )}
     >
-      {children}
-    </motion.div>
+      <div className="flex flex-row items-center gap-2 mb-3">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center text-white font-bold">
+          {name.charAt(0)}
+        </div>
+        <div className="flex flex-col">
+          <figcaption className="text-sm font-medium dark:text-black">
+            {name}
+          </figcaption>
+          <p className="text-xs font-medium text-gray-500">{username}</p>
+        </div>
+      </div>
+      <div className="flex gap-1 mb-2">
+        {[...Array(rating)].map((_, i) => (
+          <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+        ))}
+      </div>
+      <blockquote className="text-sm text-gray-600 dark:text-gray-700">{body}</blockquote>
+    </figure>
   );
 }
 
@@ -99,34 +142,33 @@ export default function TestimonialsFAQ() {
           </h2>
         </motion.div>
 
-        <div className="mb-24 overflow-hidden">
-          <div className="flex gap-6">
-            <MarqueeItem className="flex gap-6">
-              {[...testimonials, ...testimonials].map((testimonial, i) => (
-                <div
-                  key={i}
-                  className="flex-shrink-0 w-80 bg-gray-50 rounded-2xl p-6 border border-gray-100"
-                >
-                  <Quote className="w-8 h-8 text-primary/20 mb-4" />
-                  <p className="text-gray-600 mb-4">{testimonial.text}</p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center text-2xl">
-                      {testimonial.avatar}
-                    </div>
-                    <div>
-                      <div className="font-semibold text-black">{testimonial.name}</div>
-                      <div className="text-sm text-gray-500">{testimonial.role}</div>
-                    </div>
-                  </div>
-                  <div className="flex gap-1 mt-3">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </MarqueeItem>
-          </div>
+        <div className="mb-24 relative flex w-full flex-col items-center justify-center overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:20s]">
+            {firstRow.map((testimonial) => (
+              <ReviewCard
+                key={testimonial.username}
+                name={testimonial.name}
+                username={testimonial.username}
+                role={testimonial.role}
+                rating={testimonial.rating}
+                body={testimonial.body}
+              />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover className="[--duration:20s]">
+            {secondRow.map((testimonial) => (
+              <ReviewCard
+                key={testimonial.username}
+                name={testimonial.name}
+                username={testimonial.username}
+                role={testimonial.role}
+                rating={testimonial.rating}
+                body={testimonial.body}
+              />
+            ))}
+          </Marquee>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-gray-50"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-gray-50"></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
