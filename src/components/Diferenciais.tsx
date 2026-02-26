@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { FileTextIcon, BellIcon, Share2Icon, CalendarIcon, Check, Scale, Building2, Landmark, Users, FileText, Gavel } from 'lucide-react';
 import { BentoCard, BentoGrid } from './BentoGrid';
 import { cn } from '../lib/utils';
@@ -201,41 +202,63 @@ const features = [
       >
         <motion.div 
           whileHover={{ scale: 1.02 }}
-          className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-gray-100 shadow-sm"
+          className="bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-gray-100 shadow-sm"
         >
           <div className="text-center mb-2">
-            <span className="text-xs font-semibold text-gray-900">Fevereiro 2026</span>
+            <span className="text-xs font-semibold text-gray-700">Fevereiro 2026</span>
           </div>
           <div className="grid grid-cols-7 gap-1 text-center">
             {['D', 'S', 'T', 'Q', 'Q', 'S', 'S'].map((d, i) => (
-              <span key={i} className="text-[10px] text-gray-400">{d}</span>
+              <span key={i} className="text-[10px] text-gray-500">{d}</span>
             ))}
-            {Array.from({ length: 28 }, (_, i) => {
-              const day = i + 1;
-              const isDeadline = [5, 12, 18, 26].includes(day);
-              return (
-                <motion.div
-                  key={day}
-                  whileHover={{ scale: 1.2 }}
-                  animate={isDeadline ? { 
-                    backgroundColor: ["#E5293F", "#A82130", "#E5293F"] 
-                  } : {}}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className={cn(
-                    "w-6 h-6 text-[10px] flex items-center justify-center rounded-full cursor-pointer",
-                    isDeadline ? "text-white font-bold" : "text-gray-700 hover:bg-gray-100"
-                  )}
-                >
-                  {day}
-                </motion.div>
-              );
-            })}
+            <RandomCalendarDays />
           </div>
         </motion.div>
       </motion.div>
     ),
   },
 ];
+
+function RandomCalendarDays() {
+  const [activeDays, setActiveDays] = useState<number[]>([5, 12]);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const randomDay = Math.floor(Math.random() * 28) + 1;
+      setActiveDays(prev => {
+        const filtered = prev.filter(d => d !== randomDay);
+        return [...filtered, randomDay].slice(-2);
+      });
+    }, 2500);
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  return (
+    <>
+      {Array.from({ length: 28 }, (_, i) => {
+        const day = i + 1;
+        const isActive = activeDays.includes(day);
+        return (
+          <motion.div
+            key={day}
+            animate={isActive ? { 
+              backgroundColor: ["#E5293F", "#A82130", "#E5293F"],
+              scale: [1, 1.15, 1]
+            } : {}}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className={cn(
+              "w-6 h-6 text-[10px] flex items-center justify-center rounded-full cursor-pointer",
+              isActive ? "text-white font-bold" : "text-gray-600 hover:bg-gray-200/50"
+            )}
+          >
+            {day}
+          </motion.div>
+        );
+      })}
+    </>
+  );
+}
 
 export default function Diferenciais() {
   return (
