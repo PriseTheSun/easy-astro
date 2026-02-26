@@ -32,17 +32,18 @@ function CompanyMarquee() {
           repeat: Infinity, 
           ease: "linear" 
         }}
-        className="flex gap-12 whitespace-nowrap"
+        className="flex gap-16 whitespace-nowrap"
       >
         {[...companies, ...companies, ...companies].map((company, index) => (
           <div
             key={index}
-            className="flex items-center px-4"
+            className="flex items-center px-6"
           >
             <img 
               src={company.img.src} 
               alt={company.name} 
-              className="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-all duration-300"
+              className="h-20 w-auto object-contain"
+              style={{ minWidth: '80px' }}
             />
           </div>
         ))}
