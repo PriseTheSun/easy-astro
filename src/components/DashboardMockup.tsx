@@ -210,7 +210,7 @@ export default function DashboardMockup() {
       <motion.div
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 3, repeat: Infinity }}
-        className="absolute -left-10 top-1/3 w-16 h-16 bg-white dark:bg-gray-800 rounded-xl shadow-xl p-2 flex items-center justify-center border-2 border-primary"
+        className="absolute -left-10 top-1/3 w-16 h-16 bg-white dark:bg-gray-800 rounded-xl shadow-xl p-2 flex items-center justify-center border-2 border-primary hidden md:flex"
       >
         <div className="text-center">
           <div className="text-lg font-bold text-primary">98%</div>

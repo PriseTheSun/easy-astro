@@ -116,14 +116,14 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
       )}
     >
       {plan.popular && (
-        <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10">
+        <div className="absolute top-3 right-3 z-10">
           <div className="bg-white dark:bg-white text-black dark:text-[#E5293F] px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">
             MAIS CONTRATADO
           </div>
         </div>
       )}
 
-      <div className={cn("p-8", plan.popular ? "pt-10" : "")}>
+      <div className={cn("p-8", "")}>
         <div className="mb-6">
           <h3 className={cn(
             "text-2xl font-bold mb-2",

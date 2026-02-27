@@ -89,7 +89,7 @@ function ThemeToggle({ isDark, onToggle }: ThemeToggleProps) {
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
         className={cn(
           "absolute top-1 w-6 h-6 rounded-full flex items-center justify-center transition-colors",
-          isDark ? "bg-primary" : "bg-yellow-400"
+          isDark ? "bg-primary" : "bg-[#E5293F]"
         )}
       >
         {isDark ? (

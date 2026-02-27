@@ -327,7 +327,7 @@ export default function Dashboard() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-center"
         >
-          <ShimmerButton>
+          <ShimmerButton className="whitespace-nowrap text-sm sm:text-base">
             VEJA COMO FUNCIONA NA PRÁTICA
             <ArrowRight className="w-4 h-4" />
           </ShimmerButton>

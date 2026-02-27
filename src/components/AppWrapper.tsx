@@ -18,9 +18,6 @@ export default function AppWrapper({ children }: AppWrapperProps) {
     } else if (savedTheme === 'light') {
       setIsDarkMode(false);
       document.documentElement.classList.remove('dark');
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
     }
   }, []);
 

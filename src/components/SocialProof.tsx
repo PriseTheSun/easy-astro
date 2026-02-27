@@ -28,7 +28,7 @@ function CompanyMarquee() {
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
         transition={{ 
-          duration: 25, 
+          duration: 15, 
           repeat: Infinity, 
           ease: "linear" 
         }}
@@ -42,8 +42,8 @@ function CompanyMarquee() {
             <img 
               src={company.img.src} 
               alt={company.name} 
-              className="h-24 w-auto object-contain"
-              style={{ minWidth: '100px' }}
+              className="h-16 md:h-24 w-auto object-contain"
+              style={{ minWidth: '80px' }}
             />
           </div>
         ))}

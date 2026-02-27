@@ -342,7 +342,7 @@ function ProtocolScheduler() {
           whileHover={{ scale: isSaved ? 1.02 : 1 }}
           whileTap={{ scale: isSaved ? 0.98 : 1 }}
           className={cn(
-            "w-full py-3 px-4 rounded-xl text-sm font-medium flex items-center justify-center gap-2 min-h-[48px]",
+            "w-full py-3 px-2 sm:px-4 rounded-xl text-xs sm:text-sm font-medium flex items-center justify-center gap-1 sm:gap-2 min-h-[48px] whitespace-nowrap",
             isSaved 
               ? 'text-white' 
               : 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500'
@@ -438,7 +438,7 @@ export default function ArtifactCards() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="col-span-1 lg:col-span-3 lg:row-span-3 lg:col-start-4 lg:row-start-4"
+            className="col-span-1 lg:col-span-3 lg:row-span-3 lg:col-start-4 lg:row-start-4 mt-[60px] lg:mt-0"
           >
             <ProtocolScheduler />
           </motion.div>
