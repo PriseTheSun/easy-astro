@@ -8,6 +8,15 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   integrations: [react()],
 
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
+      },
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()]
   }
