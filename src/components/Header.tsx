@@ -228,7 +228,11 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
                 </div>
               ))}
               <div className="pt-4 space-y-3">
-                <button className="w-full text-left py-2 text-gray-700 font-medium">Entrar</button>
+                <div className="flex items-center justify-between py-2">
+                  <span className="text-gray-700 dark:text-gray-300 font-medium">Modo Escuro</span>
+                  <ThemeToggle isDark={isDarkMode} onToggle={onToggleDarkMode || (() => {})} />
+                </div>
+                <button className="w-full text-left py-2 text-gray-700 dark:text-gray-300 font-medium">Entrar</button>
                 <ShimmerButton className="w-full justify-center">Testar 7 dias Grátis</ShimmerButton>
               </div>
             </div>

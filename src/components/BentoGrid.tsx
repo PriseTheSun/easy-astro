@@ -36,7 +36,7 @@ export function BentoCard({
     >
       <div className="pointer-events-none absolute inset-0 z-10" />
       
-      <div className="relative z-20 p-8">
+      <div className="relative z-20 p-4 md:p-8">
         {Icon && (
           <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary">
             <Icon className="h-6 w-6 text-white" />
@@ -46,7 +46,7 @@ export function BentoCard({
         <p className="text-sm text-gray-600 dark:text-gray-300">{description}</p>
       </div>
 
-      <div className="relative z-20 px-8 pb-8">
+      <div className="relative z-20 px-4 md:px-8 pb-4 md:pb-8">
         {cta && (
           <span className="inline-flex items-center text-sm font-semibold text-primary">
             {cta} <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
@@ -54,7 +54,7 @@ export function BentoCard({
         )}
       </div>
 
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 hidden md:block">
         {background}
       </div>
     </motion.a>
