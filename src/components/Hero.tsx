@@ -70,6 +70,10 @@ export default function Hero({ onCTAClick }: HeroProps) {
                     key={idx}
                     src={img.src}
                     alt={`Profile ${idx + 1}`}
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                    decoding="async"
                     className="w-10 h-10 rounded-full border-2 border-white dark:border-gray-900 object-cover"
                   />
                 ))}

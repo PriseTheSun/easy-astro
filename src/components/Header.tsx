@@ -79,6 +79,7 @@ function ThemeToggle({ isDark, onToggle }: ThemeToggleProps) {
   return (
     <button
       onClick={onToggle}
+      aria-label={isDark ? "Mudar para modo claro" : "Mudar para modo escuro"}
       className={cn(
         "relative w-14 h-8 rounded-full transition-colors duration-300",
         isDark ? "bg-gray-800" : "bg-gray-200"
@@ -128,7 +129,7 @@ export default function Header({ onToggleDarkMode, isDarkMode = false }: HeaderP
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#" className="flex items-center gap-2">
-            <img src={isDarkMode ? logoBranca.src : logoPrincipal.src} alt="EasyJur" className="h-8 w-auto" />
+            <img src={isDarkMode ? logoBranca.src : logoPrincipal.src} alt="EasyJur" width={32} height={32} className="h-8 w-auto" />
           </a>
 
           <nav className="hidden lg:flex items-center gap-1">

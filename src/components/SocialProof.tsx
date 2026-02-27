@@ -42,6 +42,10 @@ function CompanyMarquee() {
             <img 
               src={company.img.src} 
               alt={company.name} 
+              width={100}
+              height={96}
+              loading="lazy"
+              decoding="async"
               className="h-16 md:h-24 w-auto object-contain"
               style={{ minWidth: '80px' }}
             />

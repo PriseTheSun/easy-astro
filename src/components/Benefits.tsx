@@ -85,6 +85,10 @@ function ImageModal({ image, title, isOpen, onClose }: { image: string; title: s
         <img
           src={image}
           alt={title}
+          width={800}
+          height={600}
+          loading="lazy"
+          decoding="async"
           className="w-full h-auto rounded-lg shadow-2xl"
         />
       </motion.div>
@@ -221,6 +225,10 @@ export default function Benefits() {
                     <img
                       src={benefits[activeIndex].image.src}
                       alt={benefits[activeIndex].title}
+                      width={600}
+                      height={400}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-auto rounded-xl object-cover"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">

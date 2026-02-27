@@ -50,6 +50,10 @@ export default function CTASection() {
               <img 
                 src={priscilaImage.src} 
                 alt="Priscila - Especialista EasyJur" 
+                width={400}
+                height={400}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-contain rounded-3xl"
               />
             </div>

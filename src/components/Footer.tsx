@@ -31,7 +31,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-6">
-              <img src={logoBranca.src} alt="EasyJur" className="h-12" />
+              <img src={logoBranca.src} alt="EasyJur" width={48} height={48} className="h-12 w-auto" />
             </a>
             <p className="text-gray-400 mb-6 max-w-sm">
               A plataforma de gestão jurídica mais completa do Brasil. 
@@ -93,7 +93,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            © 2024 EasyJur. Todos os direitos reservados.
+            © 2026 EasyJur. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 text-gray-400 text-sm">

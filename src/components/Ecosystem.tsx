@@ -78,6 +78,10 @@ export default function Ecosystem() {
                 <img 
                   src="/favicon.svg" 
                   alt="EasyJur" 
+                  width={56}
+                  height={56}
+                  loading="lazy"
+                  decoding="async"
                   className="w-14 h-14"
                 />
               </motion.div>

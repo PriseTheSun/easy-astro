@@ -135,6 +135,10 @@ function ReviewCard({
           <img
             src={img.src}
             alt={name}
+            width={40}
+            height={40}
+            loading="lazy"
+            decoding="async"
             className="w-10 h-10 rounded-full object-cover"
           />
         ) : (
@@ -233,7 +237,7 @@ export default function TestimonialsFAQ() {
                   className="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center border border-gray-200 dark:border-gray-700 hover:border-primary/30 hover:shadow-lg transition-all"
                 >
                   <div className="h-16 flex items-center justify-center mb-3">
-                    <img src={partner.img.src} alt={partner.name} className="max-h-full max-w-full object-contain" />
+                    <img src={partner.img.src} alt={partner.name} width={100} height={64} loading="lazy" decoding="async" className="max-h-full max-w-full object-contain" />
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">{partner.desc}</div>
                 </motion.div>
